@@ -15,7 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\main.cpp">
+    <ClCompile Include="src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -23,5 +29,31 @@
     <ClInclude Include="include\Vector2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\Renderer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Game.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ReaderStrategy\SamuraiReader.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="resources\puzzle.4x4" />
+    <CopyFileToFolders Include="resources\puzzle.6x6" />
+    <CopyFileToFolders Include="resources\puzzle.9x9" />
+    <CopyFileToFolders Include="resources\puzzle.jigsaw" />
+    <CopyFileToFolders Include="resources\puzzle.samurai" />
+    <CopyFileToFolders Include="resources\puzzle2.4x4" />
+    <CopyFileToFolders Include="resources\puzzle2.6x6" />
+    <CopyFileToFolders Include="resources\puzzle2.9x9" />
+    <CopyFileToFolders Include="resources\puzzle2.jigsaw" />
+    <CopyFileToFolders Include="resources\puzzle2.samurai" />
+    <CopyFileToFolders Include="resources\puzzle3.4x4" />
+    <CopyFileToFolders Include="resources\puzzle3.6x6" />
+    <CopyFileToFolders Include="resources\puzzle3.9x9" />
+    <CopyFileToFolders Include="resources\puzzle3.jigsaw" />
+    <CopyFileToFolders Include="resources\puzzle3.samurai" />
   </ItemGroup>
 </Project>
