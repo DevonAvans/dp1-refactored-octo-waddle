@@ -73,6 +73,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ExternalIncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)\libs\SDL2\include;$(ProjectDir)\libs\SDL2_image\include;$(ProjectDir)\libs\SDL2_ttf\include;$(IncludePath);$(ExternalIncludePath)</ExternalIncludePath>
     <LibraryPath>$(ProjectDir)libs\SDL2\lib\x64;$(ProjectDir)libs\SDL2_image\lib\x64;$(ProjectDir)libs\SDL2_ttf\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -109,7 +110,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\Devon\Documents\Avans\Blok12\dp1-refactored-octo-waddle\Eindopdracht.Logic\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -135,15 +136,40 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Composite\Composite.cpp" />
+    <ClCompile Include="src\Strategy\SudokuReader.cpp" />
+    <ClCompile Include="src\View\Color.cpp" />
+    <ClCompile Include="src\Composite\Leaf.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\Renderer.cpp" />
+    <ClCompile Include="src\View\Renderer.cpp" />
+    <ClCompile Include="src\Builder\SamuraiBuilder.cpp" />
+    <ClCompile Include="src\Builder\StandardBuilder.cpp" />
+    <ClCompile Include="src\Strategy\FourByFourReader.cpp" />
+    <ClCompile Include="src\Strategy\JigsawReader.cpp" />
+    <ClCompile Include="src\Strategy\NineByNineReader.cpp" />
+    <ClCompile Include="src\Strategy\ReaderContext.cpp" />
+    <ClCompile Include="src\Strategy\SamuraiReader.cpp" />
+    <ClCompile Include="src\Strategy\SixBySixReader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Builder\SamuraiBuilder.hpp" />
+    <ClInclude Include="include\Builder\StandardBuilder.hpp" />
+    <ClInclude Include="include\Builder\SudokuBuilder.hpp" />
+    <ClInclude Include="include\Composite\Composite.hpp" />
+    <ClInclude Include="include\View\Color.hpp" />
     <ClInclude Include="include\Game.hpp" />
-    <ClInclude Include="include\ReaderStrategy\SamuraiReader.hpp" />
-    <ClInclude Include="include\Renderer.hpp" />
-    <ClInclude Include="include\Vector2.h" />
+    <ClInclude Include="include\Composite\Leaf.hpp" />
+    <ClInclude Include="include\Composite\Component.hpp" />
+    <ClInclude Include="include\Strategy\FourByFourReader.hpp" />
+    <ClInclude Include="include\Strategy\JigsawReader.hpp" />
+    <ClInclude Include="include\Strategy\NineByNineReader.hpp" />
+    <ClInclude Include="include\Strategy\ReaderContext.hpp" />
+    <ClInclude Include="include\Strategy\SamuraiReader.hpp" />
+    <ClInclude Include="include\Strategy\SixBySixReader.hpp" />
+    <ClInclude Include="include\Strategy\SudokuReader.hpp" />
+    <ClInclude Include="include\View\Renderer.hpp" />
+    <ClInclude Include="include\View\Vector2.h" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="resources\puzzle.4x4">

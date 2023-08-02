@@ -1,5 +1,5 @@
-#include "../include/Renderer.hpp"
-#include "../include/Game.hpp"
+#include "View/Renderer.hpp"
+#include "Game.hpp"
 
 int main(int argc, char* argv[])
 {
