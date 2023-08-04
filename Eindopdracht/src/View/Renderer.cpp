@@ -5,6 +5,7 @@
 #include "Game.hpp"
 #include "View/Color.hpp"
 #include "Composite/Composite.hpp"
+#include "View/Cell.hpp"
 
 const int SIZE = 4;
 
@@ -135,11 +136,15 @@ void Renderer::draw_highlighted_collection() const
 
 void Renderer::draw_normal_board() const
 {
-	const auto sudoku = game_->get_sudoku();
+	const std::shared_ptr<Component> sudoku = game_->get_sudoku();
+	// TODO: get values of sudoku
 	const int board_size = SIZE;
 	const int grid_size = board_size * CELL_SIZE;
+	//auto leaf = std::make_shared<Leaf>(5);
+	//Cell cell{leaf};
+	//cell.render(renderer_, font_);
 
-	SDL_SetRenderDrawColor(renderer_, 0, 0, 0, 255);
+	/*SDL_SetRenderDrawColor(renderer_, 0, 0, 0, 255);
 
 	for (int i = 0; i <= grid_size; i += CELL_SIZE)
 	{
@@ -161,7 +166,7 @@ void Renderer::draw_normal_board() const
 	for (int i = 0; i <= grid_size; i += static_cast<int>(sqrt(board_size)) * CELL_SIZE)
 	{
 		SDL_RenderDrawLine(renderer_, 0, 0 + i, 0 + grid_size, 0 + i);
-	}
+	}*/
 }
 
 void Renderer::draw_samurai_board() const
@@ -215,12 +220,12 @@ int Renderer::initialize()
 		close();
 	}
 
-	/*font_ = TTF_OpenFont("resources/Roboto-Regular.ttf", 12);
+	font_ = TTF_OpenFont("resources/fonts/Roboto-Regular.ttf", 12);
 	if (!font_)
 	{
 		std::cout << "Could not open font!";
 		close();
-	}*/
+	}
 
 	render();
 	return 0;

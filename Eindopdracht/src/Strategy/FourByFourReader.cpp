@@ -19,11 +19,11 @@ std::shared_ptr<Component> FourByFourReader::read(const std::string& path)
 		{
 			const auto index = i * 4 + j;
 			const auto cell_value = std::stoi(str.substr(index, 1));
-			const auto cell = std::make_shared<Leaf>(cell_value);
+			const auto cell = std::make_shared<Leaf>(i, j, cell_value);
 			row->add_child(cell);
 		}
 		sudoku->add_child(row);
 	}
 
-	return nullptr;
+	return sudoku;
 }
