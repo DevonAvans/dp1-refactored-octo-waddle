@@ -31,6 +31,7 @@ void CellSearchVisitor::set_target(const int row, const int col)
 {
 	target_row_ = row;
 	target_col_ = col;
+	cell_ = nullptr;
 }
 
 Leaf* CellSearchVisitor::get_cell() const
