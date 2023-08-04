@@ -27,6 +27,12 @@ void CellSearchVisitor::visit_composite(Composite* composite)
 	}
 }
 
+void CellSearchVisitor::set_target(const int row, const int col)
+{
+	target_row_ = row;
+	target_col_ = col;
+}
+
 Leaf* CellSearchVisitor::get_cell() const
 {
 	return cell_;

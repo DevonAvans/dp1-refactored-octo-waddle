@@ -19,6 +19,11 @@ int Leaf::get_value() const
 	return value_;
 }
 
+void Leaf::set_value(const int value)
+{
+	value_ = value;
+}
+
 int Leaf::get_row() const
 {
 	return row_;

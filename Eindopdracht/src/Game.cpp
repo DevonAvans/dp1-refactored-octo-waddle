@@ -19,6 +19,9 @@ void Game::start()
 	const auto searcher = new CellSearchVisitor(0, 1);
 	sudoku_->accept(searcher);
 	const auto leaf = searcher->get_cell();
+	leaf->set_value(1);
+	std::cout << "" << std::endl;
+	leaf->set_value(8);
 	std::cout << "" << std::endl;
 }
 

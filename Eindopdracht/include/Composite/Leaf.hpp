@@ -10,6 +10,7 @@ public:
 	void accept(Visitor* visitor) override;
 
 	[[nodiscard]] int get_value() const override;
+	void set_value(int value);
 	[[nodiscard]] int get_row() const;
 	[[nodiscard]] int get_col() const;
 

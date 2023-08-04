@@ -7,6 +7,8 @@ public:
 	explicit CellSearchVisitor(const int row, const int col);
 	void visit_leaf(Leaf* leaf) override;
 	void visit_composite(Composite* composite) override;
+
+	void set_target(int row, int col);
 	[[nodiscard]] Leaf* get_cell() const;
 private:
 	int target_row_;
