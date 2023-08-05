@@ -26,6 +26,7 @@ void Game::start()
 	sudoku_->accept(searcher_);
 	const auto leaf2 = searcher_->get_cell();
 	leaf2->set_value(8);
+	leaf2->set_value(5);
 	std::cout << "" << std::endl;
 }
 

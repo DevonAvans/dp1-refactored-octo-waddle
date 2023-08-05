@@ -24,7 +24,7 @@ void EmptyState::set_value(Leaf& cell, const int value)
 	cell.set_state(new HelperState());
 }
 
-bool EmptyState::can_set_value() const
-{
-	return true;
-}
+//bool EmptyState::can_set_value() const
+//{
+//	return true;
+//}

@@ -9,8 +9,8 @@ public:
 	//virtual void enter_empty(Leaf& cell) = 0;
 	virtual void set_value(Leaf& cell, int value) = 0;
 
-	[[nodiscard]] virtual bool can_set_value() const
-	{
-		return false;
-	}
+	//[[nodiscard]] virtual bool can_set_value() const
+	//{
+	//	return false;
+	//}
 };
