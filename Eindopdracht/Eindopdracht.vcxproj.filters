@@ -69,6 +69,15 @@
     <ClCompile Include="src\Visitor\CellSearchVisitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\State\FinalState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\State\HelperState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\State\EmptyState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\View\Vector2.h">
@@ -143,6 +152,18 @@
     <ClInclude Include="include\Visitor\CellSearchVisitor.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\State\CellState.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\State\FinalState.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\State\HelperState.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\State\EmptyState.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="resources\puzzle.4x4" />
@@ -160,5 +181,8 @@
     <CopyFileToFolders Include="resources\puzzle3.9x9" />
     <CopyFileToFolders Include="resources\puzzle3.jigsaw" />
     <CopyFileToFolders Include="resources\puzzle3.samurai" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="resources\fonts\Roboto-Regular.ttf" />
   </ItemGroup>
 </Project>

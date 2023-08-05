@@ -1,6 +1,8 @@
 #pragma once
 #include <memory>
 
+#include "Visitor/CellSearchVisitor.hpp"
+
 class Component;
 
 class Game
@@ -16,4 +18,5 @@ public:
 private:
 	bool quit_;
 	std::shared_ptr<Component> sudoku_;
+	CellSearchVisitor* searcher_;
 };

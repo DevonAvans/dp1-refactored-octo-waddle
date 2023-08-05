@@ -8,39 +8,29 @@
 
 Game::Game() : quit_{false}
 {
+	const std::string path = "resources/puzzle.4x4";
+	ReaderContext context;
+	sudoku_ = context.read(path);
 }
 
 void Game::start()
 {
-	const std::string path = "resources/puzzle.4x4";
-	ReaderContext context;
-	sudoku_ = context.read(path);
 	const auto visitor = new SudokuVisitor();
-	const auto searcher = new CellSearchVisitor(0, 1);
-	sudoku_->accept(searcher);
-	const auto leaf = searcher->get_cell();
+	searcher_ = new CellSearchVisitor(0, 1);
+	sudoku_->accept(searcher_);
+	const auto leaf = searcher_->get_cell();
 	leaf->set_value(1);
 	std::cout << "" << std::endl;
-	leaf->set_value(8);
+
+	searcher_->set_target(0, 0);
+	sudoku_->accept(searcher_);
+	const auto leaf2 = searcher_->get_cell();
+	leaf2->set_value(8);
 	std::cout << "" << std::endl;
 }
 
 void Game::update()
 {
-	/*
-	 *while (!quit_)
-	{
-		SDL_Event e;
-		while (SDL_PollEvent(&e))
-		{
-			if (e.type == SDL_QUIT)
-			{
-				quit_ = true;
-				std::cout << "WINDOW close" << std::endl;
-			}
-		}
-	}
-	*/
 }
 
 void Game::stop()

@@ -137,6 +137,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Composite\Composite.cpp" />
+    <ClCompile Include="src\State\EmptyState.cpp" />
+    <ClCompile Include="src\State\FinalState.cpp" />
+    <ClCompile Include="src\State\HelperState.cpp" />
     <ClCompile Include="src\Strategy\SudokuReader.cpp" />
     <ClCompile Include="src\View\Color.cpp" />
     <ClCompile Include="src\Composite\Leaf.cpp" />
@@ -160,6 +163,10 @@
     <ClInclude Include="include\Builder\StandardBuilder.hpp" />
     <ClInclude Include="include\Builder\SudokuBuilder.hpp" />
     <ClInclude Include="include\Composite\Composite.hpp" />
+    <ClInclude Include="include\State\CellState.hpp" />
+    <ClInclude Include="include\State\EmptyState.hpp" />
+    <ClInclude Include="include\State\FinalState.hpp" />
+    <ClInclude Include="include\State\HelperState.hpp" />
     <ClInclude Include="include\View\Cell.hpp" />
     <ClInclude Include="include\View\Color.hpp" />
     <ClInclude Include="include\Game.hpp" />
@@ -272,6 +279,9 @@
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\resources</DestinationFolders>
     </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="resources\fonts\Roboto-Regular.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
