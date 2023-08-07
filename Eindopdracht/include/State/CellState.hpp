@@ -13,4 +13,9 @@ public:
 	//{
 	//	return false;
 	//}
+protected:
+	virtual void set_cell_value(Leaf& cell, int value)
+	{
+		cell.value_ = value;
+	}
 };

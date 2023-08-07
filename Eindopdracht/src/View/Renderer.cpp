@@ -5,6 +5,7 @@
 #include "Game.hpp"
 #include "View/Color.hpp"
 #include "Composite/Composite.hpp"
+#include "View/BoardRendererVisitor.hpp"
 #include "View/Cell.hpp"
 
 const int SIZE = 4;
@@ -140,6 +141,8 @@ void Renderer::draw_normal_board() const
 	// TODO: get values of sudoku
 	const int board_size = SIZE;
 	const int grid_size = board_size * CELL_SIZE;
+	BoardRendererVisitor board_r{CELL_SIZE, renderer_, font_};
+	board_r.render_sudoku(sudoku);
 	//auto leaf = std::make_shared<Leaf>(5);
 	//Cell cell{leaf};
 	//cell.render(renderer_, font_);

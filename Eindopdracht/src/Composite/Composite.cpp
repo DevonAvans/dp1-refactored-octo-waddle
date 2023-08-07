@@ -11,10 +11,6 @@ int Composite::get_value() const
 	return 0;
 }
 
-void Composite::display() const
-{
-}
-
 void Composite::accept(Visitor* visitor)
 {
 	visitor->visit_composite(this);

@@ -141,6 +141,7 @@
     <ClCompile Include="src\State\FinalState.cpp" />
     <ClCompile Include="src\State\HelperState.cpp" />
     <ClCompile Include="src\Strategy\SudokuReader.cpp" />
+    <ClCompile Include="src\View\BoardRendererVisitor.cpp" />
     <ClCompile Include="src\View\Color.cpp" />
     <ClCompile Include="src\Composite\Leaf.cpp" />
     <ClCompile Include="src\Game.cpp" />
@@ -154,7 +155,6 @@
     <ClCompile Include="src\Strategy\ReaderContext.cpp" />
     <ClCompile Include="src\Strategy\SamuraiReader.cpp" />
     <ClCompile Include="src\Strategy\SixBySixReader.cpp" />
-    <ClCompile Include="src\View\Cell.cpp" />
     <ClCompile Include="src\Visitor\CellSearchVisitor.cpp" />
     <ClCompile Include="src\Visitor\SudokuVisitor.cpp" />
   </ItemGroup>
@@ -162,12 +162,13 @@
     <ClInclude Include="include\Builder\SamuraiBuilder.hpp" />
     <ClInclude Include="include\Builder\StandardBuilder.hpp" />
     <ClInclude Include="include\Builder\SudokuBuilder.hpp" />
+    <ClInclude Include="include\CellAttributes.hpp" />
     <ClInclude Include="include\Composite\Composite.hpp" />
+    <ClInclude Include="include\Configuration.hpp" />
     <ClInclude Include="include\State\CellState.hpp" />
     <ClInclude Include="include\State\EmptyState.hpp" />
     <ClInclude Include="include\State\FinalState.hpp" />
     <ClInclude Include="include\State\HelperState.hpp" />
-    <ClInclude Include="include\View\Cell.hpp" />
     <ClInclude Include="include\View\Color.hpp" />
     <ClInclude Include="include\Game.hpp" />
     <ClInclude Include="include\Composite\Leaf.hpp" />
@@ -179,10 +180,8 @@
     <ClInclude Include="include\Strategy\SamuraiReader.hpp" />
     <ClInclude Include="include\Strategy\SixBySixReader.hpp" />
     <ClInclude Include="include\Strategy\SudokuReader.hpp" />
-    <ClInclude Include="include\View\Renderable.hpp" />
     <ClInclude Include="include\View\Renderer.hpp" />
-    <ClInclude Include="include\View\Sudoku.hpp" />
-    <ClInclude Include="include\View\SudokuRenderer.hpp" />
+    <ClInclude Include="include\View\BoardRendererVisitor.hpp" />
     <ClInclude Include="include\View\Vector2.h" />
     <ClInclude Include="include\Visitor\CellSearchVisitor.hpp" />
     <ClInclude Include="include\Visitor\SudokuVisitor.hpp" />

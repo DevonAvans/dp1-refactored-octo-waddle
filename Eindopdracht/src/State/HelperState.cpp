@@ -20,5 +20,5 @@ void HelperState::set_value(Leaf& cell, const int value)
 	{
 		cell.set_state(new EmptyState());
 	}
-	cell.set_raw_value(value);
+	set_cell_value(cell, value);
 }

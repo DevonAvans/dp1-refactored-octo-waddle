@@ -7,6 +7,7 @@
 
 #include "Vector2.h"
 
+class BoardRendererVisitor;
 class Game;
 
 constexpr int SCREEN_WIDTH = 800;
@@ -41,8 +42,6 @@ private:
 	SDL_Renderer* renderer_;
 	TTF_Font* font_{};
 
-	std::shared_ptr<int> main_loop_;
-	std::unique_ptr<std::thread> thread_;
 	std::shared_ptr<Game> game_;
 	bool quit_;
 

@@ -3,6 +3,7 @@
 
 #include "Visitor/CellSearchVisitor.hpp"
 
+class Configuration;
 class Component;
 
 class Game
@@ -19,4 +20,8 @@ private:
 	bool quit_;
 	std::shared_ptr<Component> sudoku_;
 	CellSearchVisitor* searcher_;
+	//std::unique_ptr<Configuration> config_;
+
+	void change_final_state_value() const;
+	void change_empty_to_helper() const;
 };
