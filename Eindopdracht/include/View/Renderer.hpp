@@ -7,6 +7,7 @@
 
 #include "Vector2.h"
 
+class Leaf;
 class BoardRendererVisitor;
 class Game;
 
@@ -45,9 +46,11 @@ private:
 	std::shared_ptr<Game> game_;
 	bool quit_;
 
-	Vector2 square_;
+	bool input_;
 
-	void hightlight_square(Vector2 pos);
+	//Vector2 square_;
+
+	void hightlight_square();
 	void draw_highlighted_square() const;
 
 	void draw_highlighted_row() const;

@@ -4,7 +4,6 @@
 #include "State/EmptyState.hpp"
 #include "State/FinalState.hpp"
 #include "Visitor/Visitor.hpp"
-#include "Configuration.hpp"
 
 Leaf::Leaf(CellAttributes attributes, const int initial_value) :
 	current_state_{nullptr},

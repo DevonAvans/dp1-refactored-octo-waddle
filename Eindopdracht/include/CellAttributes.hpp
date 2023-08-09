@@ -2,9 +2,9 @@
 
 struct CellAttributes
 {
-	size_t row;
-	size_t col;
-	//size_t section;
+	int row;
+	int col;
+	int section;
 	// Misschien overerven voor samurai
 	//int sudoku;
 };

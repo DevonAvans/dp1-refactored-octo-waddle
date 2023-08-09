@@ -4,7 +4,7 @@
 class CellSearchVisitor : public Visitor
 {
 public:
-	explicit CellSearchVisitor(const int row, const int col);
+	explicit CellSearchVisitor();
 	void visit_leaf(Leaf* leaf) override;
 	void visit_composite(Composite* composite) override;
 
@@ -13,5 +13,5 @@ public:
 private:
 	int target_row_;
 	int target_col_;
-	Leaf* cell_;
+	Leaf* cell_{};
 };

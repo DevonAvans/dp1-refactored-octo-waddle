@@ -152,9 +152,6 @@
     <ClInclude Include="include\State\EmptyState.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Configuration.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\CellAttributes.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>

@@ -1,6 +1,7 @@
 #include "Visitor/CellSearchVisitor.hpp"
 
-CellSearchVisitor::CellSearchVisitor(const int row, const int col) : target_row_{row}, target_col_{col}
+CellSearchVisitor::CellSearchVisitor()
+	: target_row_{0}, target_col_{0}
 {
 }
 

@@ -164,7 +164,6 @@
     <ClInclude Include="include\Builder\SudokuBuilder.hpp" />
     <ClInclude Include="include\CellAttributes.hpp" />
     <ClInclude Include="include\Composite\Composite.hpp" />
-    <ClInclude Include="include\Configuration.hpp" />
     <ClInclude Include="include\State\CellState.hpp" />
     <ClInclude Include="include\State\EmptyState.hpp" />
     <ClInclude Include="include\State\FinalState.hpp" />

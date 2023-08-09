@@ -1,6 +1,10 @@
 #include "Composite/Composite.hpp"
 #include "Visitor/Visitor.hpp"
 
+//Composite::Composite(const Type type): type_{type}
+//{
+//}
+
 void Composite::add_child(const std::shared_ptr<Component>& component)
 {
 	children_.emplace_back(component);

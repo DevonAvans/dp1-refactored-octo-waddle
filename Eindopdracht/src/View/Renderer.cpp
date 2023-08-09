@@ -2,18 +2,19 @@
 
 #include <iostream>
 
+#include "Composite/Composite.hpp"
+#include "Composite/Leaf.hpp"
 #include "Game.hpp"
 #include "View/Color.hpp"
-#include "Composite/Composite.hpp"
 #include "View/BoardRendererVisitor.hpp"
-#include "View/Cell.hpp"
 
 const int SIZE = 4;
 
 Renderer::Renderer()
 	: window_{},
 	  renderer_{},
-	  quit_{false}
+	  quit_{false},
+	  input_{false}
 {
 }
 
@@ -32,6 +33,9 @@ void Renderer::start()
 void Renderer::render()
 {
 	SDL_Event evt;
+
+	SDL_SetRenderDrawBlendMode(renderer_, SDL_BLENDMODE_BLEND);
+
 	while (!quit_)
 	{
 		while (SDL_WaitEvent(&evt))
@@ -52,7 +56,9 @@ void Renderer::render()
 					x = evt.button.x;
 					y = evt.button.y;
 
-					hightlight_square({x, y});
+					game_->set_searcher_target(y / CELL_SIZE, x / CELL_SIZE);
+					input_ = game_->get_searcher_target() != nullptr;
+				//hightlight_square({x, y});
 					break;
 				default: ;
 				}
@@ -69,6 +75,7 @@ void Renderer::render()
 				draw_highlighted_square();
 			draw_highlighted_row();
 			*/
+			draw_highlighted_square();
 
 			SDL_RenderPresent(renderer_);
 		}
@@ -84,44 +91,32 @@ void Renderer::close()
 	SDL_Quit();
 }
 
-void Renderer::hightlight_square(const Vector2 pos)
+void Renderer::hightlight_square()
 {
-	const auto [x, y] = pos;
-
-	const int row = pos.y / CELL_SIZE;
-	const int col = pos.x / CELL_SIZE;
-
-	auto aaa = game_->get_sudoku();
-
-	if (row > SIZE - 1 || col > SIZE - 1)
-	{
-		square_.x = -1;
-		square_.y = -1;
-	}
-	else
-	{
-		const int squareX = col * CELL_SIZE;
-		const int squareY = row * CELL_SIZE;
-
-		square_.x = squareX;
-		square_.y = squareY;
-	}
 }
 
 void Renderer::draw_highlighted_square() const
 {
-	const auto& [r, g, b, a] = Color::to_sdl(Color::yellow());
-	SDL_SetRenderDrawColor(renderer_, r, g, b, a);
-	const SDL_Rect rect{square_.x, square_.y, CELL_SIZE, CELL_SIZE};
-	SDL_RenderFillRect(renderer_, &rect);
+	const auto leaf = game_->get_searcher_target();
+	if (leaf == nullptr) { return; }
+
+	const auto& [r, g, b, a] = Color::to_sdl(Color::red());
+	SDL_SetRenderDrawColor(renderer_, r, g, b, 100);
+
+	int selectedX = leaf->get_col() * CELL_SIZE;
+	int selectedY = leaf->get_row() * CELL_SIZE;
+
+	// Draw a red rectangle over the selected square
+	const SDL_Rect selectedRect = {selectedX, selectedY, CELL_SIZE, CELL_SIZE};
+	SDL_RenderFillRect(renderer_, &selectedRect);
 }
 
 void Renderer::draw_highlighted_row() const
 {
 	const auto& [r, g, b, a] = Color::to_sdl(Color::red());
 	SDL_SetRenderDrawColor(renderer_, r, g, b, a);
-	const SDL_Rect rect{0, square_.y, SIZE * CELL_SIZE + 1, CELL_SIZE};
-	SDL_RenderDrawRect(renderer_, &rect);
+	//const SDL_Rect rect{0, square_.y, SIZE * CELL_SIZE + 1, CELL_SIZE};
+	//SDL_RenderDrawRect(renderer_, &rect);
 }
 
 void Renderer::draw_highlighted_col() const

@@ -7,6 +7,7 @@
 class Composite : public Component
 {
 public:
+	//explicit Composite(Type type);
 	void add_child(const std::shared_ptr<Component>& component);
 	//size_t get_size() const;
 	[[nodiscard]] int get_value() const override;
