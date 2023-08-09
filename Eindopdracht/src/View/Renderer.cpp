@@ -8,8 +8,6 @@
 #include "View/Color.hpp"
 #include "View/BoardRendererVisitor.hpp"
 
-const int SIZE = 4;
-
 Renderer::Renderer()
 	: window_{},
 	  renderer_{},
@@ -152,9 +150,6 @@ void Renderer::draw_highlighted_collection() const
 void Renderer::draw_normal_board() const
 {
 	const std::shared_ptr<Component> sudoku = game_->get_sudoku();
-	// TODO: get values of sudoku
-	const int board_size = SIZE;
-	const int grid_size = board_size * CELL_SIZE;
 	BoardRendererVisitor board_r{CELL_SIZE, renderer_, font_};
 	board_r.render_sudoku(sudoku);
 	//auto leaf = std::make_shared<Leaf>(5);

@@ -2,8 +2,6 @@
 #include "CellAttributes.hpp"
 #include "Component.hpp"
 
-
-class Configuration;
 class CellState;
 
 class Leaf final : public Component
@@ -23,7 +21,6 @@ public:
 
 private:
 	CellState* current_state_;
-	// const std::unique_ptr<Configuration>& config_;
 
 	CellAttributes attributes_;
 	int value_;

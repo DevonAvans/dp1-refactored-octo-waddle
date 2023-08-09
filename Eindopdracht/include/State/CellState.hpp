@@ -4,17 +4,9 @@
 class CellState
 {
 public:
-	//virtual void enter_definitive_state(Leaf& cell) = 0;
-	//virtual void enter_hulp_state(Leaf& cell) = 0;
-	//virtual void enter_empty(Leaf& cell) = 0;
 	virtual void set_value(Leaf& cell, int value) = 0;
-
-	//[[nodiscard]] virtual bool can_set_value() const
-	//{
-	//	return false;
-	//}
 protected:
-	virtual void set_cell_value(Leaf& cell, int value)
+	virtual void set_cell_value(Leaf& cell, const int value)
 	{
 		cell.value_ = value;
 	}
