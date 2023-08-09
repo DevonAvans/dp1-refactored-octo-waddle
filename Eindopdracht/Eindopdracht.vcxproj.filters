@@ -178,5 +178,6 @@
   </ItemGroup>
   <ItemGroup>
     <Font Include="resources\fonts\Roboto-Regular.ttf" />
+    <Font Include="resources\fonts\Roboto-Bold.ttf" />
   </ItemGroup>
 </Project>

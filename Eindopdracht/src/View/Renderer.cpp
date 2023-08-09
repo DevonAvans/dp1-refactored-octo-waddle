@@ -119,7 +119,7 @@ void Renderer::draw_highlighted_square() const
 	const auto leaf = game_->get_searcher_target();
 	if (leaf == nullptr) { return; }
 
-	const auto& [r, g, b, a] = Color::to_sdl(Color::red());
+	const auto& [r, g, b, a] = Color::to_sdl(Color::black());
 	SDL_SetRenderDrawColor(renderer_, r, g, b, 100);
 
 	int selectedX = leaf->get_col() * CELL_SIZE;
@@ -237,7 +237,7 @@ int Renderer::initialize()
 		close();
 	}
 
-	font_ = TTF_OpenFont("resources/fonts/Roboto-Regular.ttf", 12);
+	font_ = TTF_OpenFont("resources/fonts/Roboto-Bold.ttf", 16);
 	if (!font_)
 	{
 		std::cout << "Could not open font!";

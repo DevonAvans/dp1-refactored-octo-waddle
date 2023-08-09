@@ -46,6 +46,11 @@ int Leaf::get_col() const
 	return attributes_.col;
 }
 
+int Leaf::get_section() const
+{
+	return attributes_.section;
+}
+
 void Leaf::set_state(CellState* state)
 {
 	current_state_ = state;

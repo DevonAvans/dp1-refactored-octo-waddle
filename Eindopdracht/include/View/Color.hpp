@@ -23,8 +23,16 @@ public:
 	static const Color& red() { return red_; }
 	static const Color& green() { return green_; }
 	static const Color& blue() { return blue_; }
-	static const Color& black() { return black_; }
+	static const Color& orange() { return orange_; }
+	static const Color& cyan() { return cyan_; }
+	static const Color& magenta() { return magenta_; }
+	static const Color& pink() { return pink_; }
+	static const Color& purple() { return purple_; }
 	static const Color& yellow() { return yellow_; }
+	static const Color& black() { return black_; }
+	static const Color& grey() { return grey_; }
+	static const Color& brown() { return brown_; }
+	static const Color& transparent() { return transparent_; }
 
 private:
 	uint8_t r_;
@@ -36,6 +44,14 @@ private:
 	static Color red_;
 	static Color green_;
 	static Color blue_;
-	static Color black_;
+	static Color orange_;
+	static Color cyan_;
+	static Color magenta_;
+	static Color pink_;
+	static Color purple_;
 	static Color yellow_;
+	static Color black_;
+	static Color grey_;
+	static Color brown_;
+	static Color transparent_;
 };

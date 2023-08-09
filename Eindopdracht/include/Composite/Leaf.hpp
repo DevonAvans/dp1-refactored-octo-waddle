@@ -17,6 +17,7 @@ public:
 	void set_value(int value);
 	[[nodiscard]] int get_row() const;
 	[[nodiscard]] int get_col() const;
+	[[nodiscard]] int get_section() const;
 
 	void set_state(CellState* state);
 

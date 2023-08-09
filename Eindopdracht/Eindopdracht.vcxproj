@@ -279,6 +279,7 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
+    <Font Include="resources\fonts\Roboto-Bold.ttf" />
     <Font Include="resources\fonts\Roboto-Regular.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -9,7 +9,18 @@
 BoardRendererVisitor::BoardRendererVisitor(const int cell_size, SDL_Renderer* renderer, TTF_Font* font)
 	: cell_size_{cell_size},
 	  renderer_{renderer},
-	  font_{font}
+	  font_{font},
+	  dictionairy_{
+		  Color::red(),
+		  Color::blue(),
+		  Color::orange(),
+		  Color::cyan(),
+		  Color::magenta(),
+		  Color::pink(),
+		  Color::purple(),
+		  Color::yellow(),
+		  Color::brown()
+	  }
 {
 }
 
@@ -31,24 +42,28 @@ void BoardRendererVisitor::visit_composite(Composite* composite)
 	}
 }
 
-void BoardRendererVisitor::draw(const Leaf* leaf) const
+void BoardRendererVisitor::draw(const Leaf* leaf)
 {
 	const auto x = leaf->get_col() * cell_size_;
 	const auto y = leaf->get_row() * cell_size_;
 	const auto value = leaf->get_value();
 
-
 	// Set border color
-	const auto& [br, bg, bb, ba] = Color::to_sdl(Color::black());
-	SDL_SetRenderDrawColor(renderer_, br, bg, bb, ba);
+	//const auto& [br, bg, bb, ba] = Color::to_sdl(Color::black());
+	//SDL_SetRenderDrawColor(renderer_, br, bg, bb, ba);
 
-	// Draw black border
-	const SDL_Rect border_rect = {x, y, cell_size_, cell_size_};
-	SDL_RenderFillRect(renderer_, &border_rect);
+	//// Draw black border
+	//const SDL_Rect border_rect = {x, y, cell_size_, cell_size_};
+	//SDL_RenderFillRect(renderer_, &border_rect);
 
-	// Set inner color
+	// Set white background color
 	const auto& [wr, wg, wb, wa] = Color::to_sdl(Color::white());
 	SDL_SetRenderDrawColor(renderer_, wr, wg, wb, wa);
+
+	// Set inner color
+	const auto& inner_color = dictionairy_[leaf->get_section()];
+	const auto& [r, g, b, a] = Color::to_sdl(inner_color);
+	SDL_SetRenderDrawColor(renderer_, r, g, b, 100);
 
 	const auto border_size = 1;
 	// Draw inner white rectangle

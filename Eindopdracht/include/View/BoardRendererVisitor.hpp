@@ -4,6 +4,8 @@
 
 #include "Visitor/Visitor.hpp"
 
+class Color;
+
 class BoardRendererVisitor final : public Visitor
 {
 public:
@@ -19,5 +21,7 @@ private:
 	SDL_Renderer* renderer_;
 	TTF_Font* font_;
 
-	void draw(const Leaf* leaf) const;
+	std::vector<Color> dictionairy_;
+
+	void draw(const Leaf* leaf);
 };
