@@ -9,7 +9,7 @@
 
 Game::Game() : quit_{false}
 {
-	const std::string path = "resources/puzzle.9x9";
+	const std::string path = "resources/puzzle.4x4";
 	ReaderContext context;
 	sudoku_ = context.read(path);
 	searcher_ = new CellSearchVisitor();

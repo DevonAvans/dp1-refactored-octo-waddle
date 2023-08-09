@@ -13,8 +13,7 @@ const int SIZE = 4;
 Renderer::Renderer()
 	: window_{},
 	  renderer_{},
-	  quit_{false},
-	  input_{false}
+	  quit_{false}
 {
 }
 
@@ -33,6 +32,7 @@ void Renderer::start()
 void Renderer::render()
 {
 	SDL_Event evt;
+	Leaf* leaf;
 
 	SDL_SetRenderDrawBlendMode(renderer_, SDL_BLENDMODE_BLEND);
 
@@ -48,6 +48,25 @@ void Renderer::render()
 				close();
 				break;
 			case SDL_KEYDOWN:
+				leaf = game_->get_searcher_target();
+				if (leaf != nullptr)
+				{
+					int input_value = -1; // Initialize with an invalid value
+
+					// Get the key code from the event
+					const SDL_Keycode key_code = evt.key.keysym.sym;
+
+					// Check if the key code corresponds to a numeric key (1-9)
+					if (key_code >= SDLK_0 && key_code <= SDLK_9)
+					{
+						input_value = key_code - SDLK_1 + 1; // Convert key code to input value (1-9)
+					}
+
+					if (input_value >= 0 && input_value <= 9)
+					{
+						leaf->set_value(input_value);
+					}
+				}
 				break;
 			case SDL_MOUSEBUTTONDOWN:
 				switch (evt.button.button)
@@ -57,7 +76,6 @@ void Renderer::render()
 					y = evt.button.y;
 
 					game_->set_searcher_target(y / CELL_SIZE, x / CELL_SIZE);
-					input_ = game_->get_searcher_target() != nullptr;
 				//hightlight_square({x, y});
 					break;
 				default: ;
@@ -78,6 +96,7 @@ void Renderer::render()
 			draw_highlighted_square();
 
 			SDL_RenderPresent(renderer_);
+			leaf = nullptr;
 		}
 	}
 }

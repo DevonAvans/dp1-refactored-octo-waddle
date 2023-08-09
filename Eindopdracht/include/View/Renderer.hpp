@@ -46,8 +46,6 @@ private:
 	std::shared_ptr<Game> game_;
 	bool quit_;
 
-	bool input_;
-
 	//Vector2 square_;
 
 	void hightlight_square();
