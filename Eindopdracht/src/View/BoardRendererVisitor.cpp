@@ -44,8 +44,9 @@ void BoardRendererVisitor::visit_composite(Composite* composite)
 
 void BoardRendererVisitor::draw(const Leaf* leaf)
 {
-	const auto x = leaf->get_col() * cell_size_;
-	const auto y = leaf->get_row() * cell_size_;
+	const auto [row, col, section] = leaf->get_attributes();
+	const auto x = col * cell_size_;
+	const auto y = row * cell_size_;
 	const auto value = leaf->get_value();
 
 	// Set border color
@@ -61,7 +62,7 @@ void BoardRendererVisitor::draw(const Leaf* leaf)
 	SDL_SetRenderDrawColor(renderer_, wr, wg, wb, wa);
 
 	// Set inner color
-	const auto& inner_color = dictionairy_[leaf->get_section()];
+	const auto& inner_color = dictionairy_[section];
 	const auto& [r, g, b, a] = Color::to_sdl(inner_color);
 	SDL_SetRenderDrawColor(renderer_, r, g, b, 100);
 

@@ -35,20 +35,9 @@ void Leaf::set_value(const int value)
 	current_state_->set_value(*this, value);
 }
 
-
-int Leaf::get_row() const
+CellAttributes Leaf::get_attributes() const
 {
-	return attributes_.row;
-}
-
-int Leaf::get_col() const
-{
-	return attributes_.col;
-}
-
-int Leaf::get_section() const
-{
-	return attributes_.section;
+	return attributes_;
 }
 
 void Leaf::set_state(CellState* state)

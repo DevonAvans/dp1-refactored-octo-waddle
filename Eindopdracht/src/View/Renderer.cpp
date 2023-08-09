@@ -117,14 +117,16 @@ void Renderer::draw_highlighted_square() const
 	const auto leaf = game_->get_searcher_target();
 	if (leaf == nullptr) { return; }
 
+	const auto [row, col, section] = leaf->get_attributes();
+
 	const auto& [r, g, b, a] = Color::to_sdl(Color::black());
 	SDL_SetRenderDrawColor(renderer_, r, g, b, 100);
 
-	int selectedX = leaf->get_col() * CELL_SIZE;
-	int selectedY = leaf->get_row() * CELL_SIZE;
+	const int selected_x = col * CELL_SIZE;
+	const int selected_y = row * CELL_SIZE;
 
 	// Draw a red rectangle over the selected square
-	const SDL_Rect selectedRect = {selectedX, selectedY, CELL_SIZE, CELL_SIZE};
+	const SDL_Rect selectedRect = {selected_x, selected_y, CELL_SIZE, CELL_SIZE};
 	SDL_RenderFillRect(renderer_, &selectedRect);
 }
 
