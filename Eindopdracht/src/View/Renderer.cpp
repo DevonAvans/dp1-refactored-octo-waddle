@@ -152,7 +152,7 @@ void Renderer::draw_highlighted_collection() const
 void Renderer::draw_normal_board() const
 {
 	const std::shared_ptr<Component> sudoku = game_->get_sudoku();
-	BoardRendererVisitor board_r{CELL_SIZE, renderer_, font_};
+	BoardRendererVisitor board_r{CELL_SIZE, renderer_, normal_font_, smal_font_};
 	board_r.render_sudoku(sudoku);
 	//auto leaf = std::make_shared<Leaf>(5);
 	//Cell cell{leaf};
@@ -234,8 +234,15 @@ int Renderer::initialize()
 		close();
 	}
 
-	font_ = TTF_OpenFont("resources/fonts/Roboto-Bold.ttf", 16);
-	if (!font_)
+	normal_font_ = TTF_OpenFont("resources/fonts/Roboto-Bold.ttf", 16);
+	if (!normal_font_)
+	{
+		std::cout << "Could not open font!";
+		close();
+	}
+
+	smal_font_ = TTF_OpenFont("resources/fonts/Roboto-Bold.ttf", 12);
+	if (!smal_font_)
 	{
 		std::cout << "Could not open font!";
 		close();

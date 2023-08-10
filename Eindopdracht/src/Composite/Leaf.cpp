@@ -33,6 +33,7 @@ int Leaf::get_value() const
 void Leaf::set_value(const int value)
 {
 	current_state_->set_value(*this, value);
+	candidates_.clear();
 }
 
 CellAttributes Leaf::get_attributes() const
@@ -43,4 +44,22 @@ CellAttributes Leaf::get_attributes() const
 void Leaf::set_state(CellState* state)
 {
 	current_state_ = state;
+}
+
+std::vector<int> Leaf::get_candidates() const
+{
+	return candidates_;
+}
+
+void Leaf::add_candidates(const int canidate)
+{
+	if (std::ranges::find(candidates_, canidate) == candidates_.end())
+	{
+		candidates_.emplace_back(canidate);
+	}
+}
+
+void Leaf::remove_candidates(const int canidate)
+{
+	std::erase(candidates_, canidate);
 }

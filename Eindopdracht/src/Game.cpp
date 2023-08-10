@@ -2,19 +2,16 @@
 
 #include <iostream>
 
-//#include "Configuration.hpp"
 #include "Strategy/ReaderContext.hpp"
 #include "Visitor/CellSearchVisitor.hpp"
 #include "Visitor/SudokuVisitor.hpp"
 
 Game::Game() : quit_{false}
 {
-	const std::string path = "resources/puzzle.9x9";
+	const std::string path = "resources/puzzle.4x4";
 	ReaderContext context;
 	sudoku_ = context.read(path);
 	searcher_ = new CellSearchVisitor();
-	// todo: make dynamic
-	//config_ = std::make_unique<Configuration>(4);
 }
 
 void Game::start()

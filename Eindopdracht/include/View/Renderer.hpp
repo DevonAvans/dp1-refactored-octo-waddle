@@ -41,7 +41,8 @@ private:
 
 	SDL_Window* window_;
 	SDL_Renderer* renderer_;
-	TTF_Font* font_{};
+	TTF_Font* normal_font_{};
+	TTF_Font* smal_font_{};
 
 	std::shared_ptr<Game> game_;
 	bool quit_;

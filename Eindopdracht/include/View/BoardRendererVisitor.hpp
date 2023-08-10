@@ -9,7 +9,7 @@ class Color;
 class BoardRendererVisitor final : public Visitor
 {
 public:
-	explicit BoardRendererVisitor(int cell_size, SDL_Renderer* renderer, TTF_Font* font);
+	explicit BoardRendererVisitor(int cell_size, SDL_Renderer* renderer, TTF_Font* font, TTF_Font* small_font);
 
 	void render_sudoku(const std::shared_ptr<Component>& sudoku);
 
@@ -19,9 +19,10 @@ public:
 private:
 	int cell_size_;
 	SDL_Renderer* renderer_;
-	TTF_Font* font_;
+	TTF_Font* normal_font_;
+	TTF_Font* small_font_;
 
 	std::vector<Color> dictionairy_;
 
-	void draw(const Leaf* leaf);
+	void draw(const Leaf* leaf) const;
 };

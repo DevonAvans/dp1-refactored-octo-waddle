@@ -78,6 +78,9 @@
     <ClCompile Include="src\View\BoardRendererVisitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Visitor\ValidationVisitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\View\Vector2.h">
@@ -156,6 +159,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\View\BoardRendererVisitor.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Visitor\ValidationVisitor.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
