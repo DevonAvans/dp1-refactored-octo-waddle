@@ -21,7 +21,7 @@ Renderer::~Renderer() = default;
 
 void Renderer::init_game()
 {
-	const std::string path = "resources/puzzle.4x4";
+	const std::string path = "resources/puzzle.jigsaw";
 	game_ = std::make_shared<Game>(path, std::make_unique<DefinitiveGameState>());
 }
 
