@@ -189,7 +189,6 @@
     <ClInclude Include="include\View\BoardRendererVisitor.hpp" />
     <ClInclude Include="include\View\Vector2.h" />
     <ClInclude Include="include\Visitor\CellSearchVisitor.hpp" />
-    <ClInclude Include="include\Visitor\SamuraiCellSearcher.hpp" />
     <ClInclude Include="include\Visitor\SudokuVisitor.hpp" />
     <ClInclude Include="include\Visitor\ValidationVisitor.hpp" />
     <ClInclude Include="include\Visitor\Visitor.hpp" />

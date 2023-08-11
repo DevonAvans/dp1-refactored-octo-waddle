@@ -4,8 +4,8 @@
 
 #include "State/Game/GameState.hpp"
 #include "Visitor/CellSearchVisitor.hpp"
+#include "Visitor/ValidationVisitor.hpp"
 
-class Configuration;
 class Component;
 
 class Game final
@@ -30,10 +30,7 @@ private:
 
 	CellSearchVisitor* searcher_;
 	std::unique_ptr<GameState> state_;
-
-	void validate_rows();
-	void validate_cols();
-	void validate_sections();
+	std::unique_ptr<ValidationVisitor> validator_;
 
 	void change_final_state_value() const;
 	void change_empty_to_helper() const;

@@ -14,6 +14,7 @@ Game::Game(const std::string& file_path, std::unique_ptr<GameState> state) : qui
 	sudoku_ = context.read(file_path);
 	searcher_ = new CellSearchVisitor();
 	state_ = std::move(state);
+	validator_ = std::make_unique<ValidationVisitor>();
 }
 
 void Game::start()
@@ -49,6 +50,10 @@ Leaf* Game::get_searcher_target() const
 	return searcher_->get_cell();
 }
 
+void Game::check() const
+{
+}
+
 void Game::set_game_state(std::unique_ptr<GameState> state)
 {
 	state_ = std::move(state);
@@ -57,18 +62,6 @@ void Game::set_game_state(std::unique_ptr<GameState> state)
 void Game::set_cell_value(Leaf& cell, const int value) const
 {
 	state_->set_number(cell, value);
-}
-
-void Game::validate_rows()
-{
-}
-
-void Game::validate_cols()
-{
-}
-
-void Game::validate_sections()
-{
 }
 
 void Game::change_final_state_value() const
