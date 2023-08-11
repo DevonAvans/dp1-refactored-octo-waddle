@@ -46,7 +46,7 @@ void BoardRendererVisitor::visit_composite(Composite* composite)
 
 void BoardRendererVisitor::draw(const Leaf* leaf) const
 {
-	const auto [row, col, section] = leaf->get_attributes();
+	const auto [row, col, section, sudoku] = leaf->get_attributes();
 	const auto x = col * cell_size_;
 	const auto y = row * cell_size_;
 	const auto value = leaf->get_value();

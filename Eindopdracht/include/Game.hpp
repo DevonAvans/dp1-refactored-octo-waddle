@@ -31,6 +31,10 @@ private:
 	CellSearchVisitor* searcher_;
 	std::unique_ptr<GameState> state_;
 
+	void validate_rows();
+	void validate_cols();
+	void validate_sections();
+
 	void change_final_state_value() const;
 	void change_empty_to_helper() const;
 };

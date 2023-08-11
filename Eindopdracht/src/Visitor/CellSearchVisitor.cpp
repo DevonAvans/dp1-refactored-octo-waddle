@@ -7,7 +7,7 @@ CellSearchVisitor::CellSearchVisitor()
 
 void CellSearchVisitor::visit_leaf(Leaf* leaf)
 {
-	const auto [row, col, section] = leaf->get_attributes();
+	const auto [row, col, section, sudoku] = leaf->get_attributes();
 
 	if (target_row_ == row && target_col_ == col)
 	{
@@ -27,10 +27,11 @@ void CellSearchVisitor::visit_composite(Composite* composite)
 	}
 }
 
-void CellSearchVisitor::set_target(const int row, const int col)
+void CellSearchVisitor::set_target(const int row, const int col, const int sudoku)
 {
 	target_row_ = row;
 	target_col_ = col;
+	target_sudoku_ = sudoku;
 	cell_ = nullptr;
 }
 

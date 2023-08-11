@@ -13,5 +13,5 @@ public:
 	[[nodiscard]] bool is_valid() const { return valid_; }
 
 protected:
-	bool valid_;
+	bool valid_{};
 };

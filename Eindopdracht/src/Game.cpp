@@ -59,6 +59,18 @@ void Game::set_cell_value(Leaf& cell, const int value) const
 	state_->set_number(cell, value);
 }
 
+void Game::validate_rows()
+{
+}
+
+void Game::validate_cols()
+{
+}
+
+void Game::validate_sections()
+{
+}
+
 void Game::change_final_state_value() const
 {
 	searcher_->set_target(0, 1);

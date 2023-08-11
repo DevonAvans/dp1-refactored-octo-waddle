@@ -129,7 +129,7 @@ void Renderer::draw_highlighted_square() const
 	const auto leaf = game_->get_searcher_target();
 	if (leaf == nullptr) { return; }
 
-	const auto [row, col, section] = leaf->get_attributes();
+	const auto [row, col, section, sudoku] = leaf->get_attributes();
 
 	const auto& [r, g, b, a] = Color::to_sdl(Color::black());
 	SDL_SetRenderDrawColor(renderer_, r, g, b, 100);
