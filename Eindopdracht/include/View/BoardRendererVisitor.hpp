@@ -25,4 +25,6 @@ private:
 	std::vector<Color> dictionairy_;
 
 	void draw(const Leaf* leaf) const;
+	int calc_x(int col, int sudoku) const;
+	int calc_y(int row, int sudoku) const;
 };

@@ -17,7 +17,7 @@ public:
 	void stop();
 
 	std::shared_ptr<Component> get_sudoku();
-	void set_searcher_target(int row, int col) const;
+	void set_searcher_target(int row, int col, int sudoku = 0) const;
 	[[nodiscard]] Leaf* get_searcher_target() const;
 
 	void check() const;

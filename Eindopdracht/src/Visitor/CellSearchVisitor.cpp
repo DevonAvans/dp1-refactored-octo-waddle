@@ -1,7 +1,7 @@
 #include "Visitor/CellSearchVisitor.hpp"
 
 CellSearchVisitor::CellSearchVisitor()
-	: target_row_{0}, target_col_{0}
+	: target_row_{0}, target_col_{0}, target_sudoku_{0}
 {
 }
 
@@ -22,7 +22,7 @@ void CellSearchVisitor::visit_composite(Composite* composite)
 		component->accept(this);
 		if (cell_ != nullptr)
 		{
-			break;
+			return;
 		}
 	}
 }

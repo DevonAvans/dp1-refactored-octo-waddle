@@ -3,5 +3,5 @@
 
 class StandardBuilder : SudokuBuilder
 {
-	Component* get() override;
+	std::shared_ptr<Component> get() override;
 };

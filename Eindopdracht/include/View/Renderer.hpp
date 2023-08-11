@@ -11,10 +11,10 @@ class Leaf;
 class BoardRendererVisitor;
 class Game;
 
-constexpr int SCREEN_WIDTH = 800;
-constexpr int SCREEN_HEIGHT = 600;
+constexpr int SCREEN_WIDTH = 900;
+constexpr int SCREEN_HEIGHT = 900;
 
-constexpr int CELL_SIZE = 50;
+constexpr int CELL_SIZE = 40;
 
 class Renderer final
 {

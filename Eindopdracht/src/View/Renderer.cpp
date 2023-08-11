@@ -21,7 +21,7 @@ Renderer::~Renderer() = default;
 
 void Renderer::init_game()
 {
-	const std::string path = "resources/puzzle.6x6";
+	const std::string path = "resources/puzzle.samurai";
 	game_ = std::make_shared<Game>(path, std::make_unique<DefinitiveGameState>());
 }
 
@@ -84,6 +84,8 @@ void Renderer::render()
 				case SDL_BUTTON_LEFT:
 					x = evt.button.x;
 					y = evt.button.y;
+
+				//const auto samurai_size = 12;
 
 					game_->set_searcher_target(y / CELL_SIZE, x / CELL_SIZE);
 				//hightlight_square({x, y});

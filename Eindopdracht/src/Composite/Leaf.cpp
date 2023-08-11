@@ -55,7 +55,7 @@ void Leaf::add_candidates(const int candidate)
 {
 	const auto existing_candidate = std::ranges::find(candidates_, candidate);
 
-	if (existing_candidate == candidates_.end())
+	if (candidate != 0 && existing_candidate == candidates_.end())
 	{
 		candidates_.emplace_back(candidate);
 	}

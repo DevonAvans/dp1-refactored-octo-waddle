@@ -46,9 +46,12 @@ void BoardRendererVisitor::visit_composite(Composite* composite)
 
 void BoardRendererVisitor::draw(const Leaf* leaf) const
 {
+	//const auto offset = 12 * cell_size_;
 	const auto [row, col, section, sudoku] = leaf->get_attributes();
-	const auto x = col * cell_size_;
-	const auto y = row * cell_size_;
+	//const auto x = col * cell_size_ + offset * sudoku;
+	//const auto y = row * cell_size_ + offset * sudoku;
+	const auto x = calc_x(col, sudoku);
+	const auto y = calc_y(row, sudoku);
 	const auto value = leaf->get_value();
 	const auto candidates = leaf->get_candidates();
 
@@ -143,4 +146,34 @@ void BoardRendererVisitor::draw(const Leaf* leaf) const
 			}
 		}
 	}
+}
+
+int BoardRendererVisitor::calc_x(const int col, const int sudoku) const
+{
+	const auto x = col * cell_size_;
+	const auto offset = 12 * cell_size_;
+	if (sudoku == 1 || sudoku == 4)
+	{
+		return x + offset;
+	}
+	if (sudoku == 2)
+	{
+		return x + offset / 2;
+	}
+	return x;
+}
+
+int BoardRendererVisitor::calc_y(const int row, const int sudoku) const
+{
+	const auto y = row * cell_size_;
+	const auto offset = 12 * cell_size_;
+	if (sudoku == 3 || sudoku == 4)
+	{
+		return y + offset;
+	}
+	if (sudoku == 2)
+	{
+		return y + offset / 2;
+	}
+	return y;
 }

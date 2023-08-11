@@ -1,8 +1,10 @@
 #pragma once
 #include "Composite/Component.hpp"
 
+#include <memory>
+
 class SudokuBuilder
 {
 public:
-	virtual Component* get() = 0;
+	virtual std::shared_ptr<Component> get() = 0;
 };
