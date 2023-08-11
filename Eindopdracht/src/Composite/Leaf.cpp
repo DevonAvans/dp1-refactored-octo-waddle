@@ -51,11 +51,17 @@ std::vector<int> Leaf::get_candidates() const
 	return candidates_;
 }
 
-void Leaf::add_candidates(const int canidate)
+void Leaf::add_candidates(const int candidate)
 {
-	if (std::ranges::find(candidates_, canidate) == candidates_.end())
+	const auto existing_candidate = std::ranges::find(candidates_, candidate);
+
+	if (existing_candidate == candidates_.end())
 	{
-		candidates_.emplace_back(canidate);
+		candidates_.emplace_back(candidate);
+	}
+	else
+	{
+		candidates_.erase(existing_candidate);
 	}
 }
 

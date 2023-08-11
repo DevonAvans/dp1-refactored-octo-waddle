@@ -30,7 +30,7 @@ public:
 	Renderer& operator=(const Renderer& other) = delete;
 	Renderer& operator=(Renderer&& other) noexcept = delete;
 
-	void init_fields(const std::shared_ptr<Game>& game);
+	void init_game();
 	void start();
 	void render();
 	void close();

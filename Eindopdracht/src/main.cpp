@@ -3,9 +3,7 @@
 
 int main(int argc, char* argv[])
 {
-	const auto game = std::make_shared<Game>();
-	Renderer::instance()->init_fields(game);
-	game->start();
+	Renderer::instance()->init_game();
 	Renderer::instance()->start();
 	return 0;
 }

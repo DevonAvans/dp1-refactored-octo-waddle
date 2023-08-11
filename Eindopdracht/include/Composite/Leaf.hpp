@@ -20,7 +20,7 @@ public:
 	void set_state(CellState* state);
 
 	[[nodiscard]] std::vector<int> get_candidates() const;
-	void add_candidates(int canidate);
+	void add_candidates(int candidate);
 	void remove_candidates(int canidate);
 
 private:

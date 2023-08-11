@@ -139,6 +139,8 @@
     <ClCompile Include="src\Composite\Composite.cpp" />
     <ClCompile Include="src\State\EmptyState.cpp" />
     <ClCompile Include="src\State\FinalState.cpp" />
+    <ClCompile Include="src\State\Game\DefinitiveGameState.cpp" />
+    <ClCompile Include="src\State\Game\HelperGameState.cpp" />
     <ClCompile Include="src\State\HelperState.cpp" />
     <ClCompile Include="src\Strategy\SudokuReader.cpp" />
     <ClCompile Include="src\View\BoardRendererVisitor.cpp" />
@@ -168,6 +170,9 @@
     <ClInclude Include="include\State\CellState.hpp" />
     <ClInclude Include="include\State\EmptyState.hpp" />
     <ClInclude Include="include\State\FinalState.hpp" />
+    <ClInclude Include="include\State\Game\DefinitiveGameState.hpp" />
+    <ClInclude Include="include\State\Game\GameState.hpp" />
+    <ClInclude Include="include\State\Game\HelperGameState.hpp" />
     <ClInclude Include="include\State\HelperState.hpp" />
     <ClInclude Include="include\View\Color.hpp" />
     <ClInclude Include="include\Game.hpp" />

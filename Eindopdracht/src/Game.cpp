@@ -2,16 +2,18 @@
 
 #include <iostream>
 
+#include "State/Game/DefinitiveGameState.hpp"
 #include "Strategy/ReaderContext.hpp"
 #include "Visitor/CellSearchVisitor.hpp"
 #include "Visitor/SudokuVisitor.hpp"
 
-Game::Game() : quit_{false}
+Game::Game(const std::string& file_path, std::unique_ptr<GameState> state) : quit_{false}
 {
-	const std::string path = "resources/puzzle.4x4";
 	ReaderContext context;
-	sudoku_ = context.read(path);
+	//todo error handle
+	sudoku_ = context.read(file_path);
 	searcher_ = new CellSearchVisitor();
+	state_ = std::move(state);
 }
 
 void Game::start()
@@ -45,6 +47,16 @@ void Game::set_searcher_target(const int row, const int col) const
 Leaf* Game::get_searcher_target() const
 {
 	return searcher_->get_cell();
+}
+
+void Game::set_game_state(std::unique_ptr<GameState> state)
+{
+	state_ = std::move(state);
+}
+
+void Game::set_cell_value(Leaf& cell, const int value) const
+{
+	state_->set_number(cell, value);
 }
 
 void Game::change_final_state_value() const

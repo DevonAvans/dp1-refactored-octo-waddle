@@ -5,6 +5,8 @@
 #include "Composite/Composite.hpp"
 #include "Composite/Leaf.hpp"
 #include "Game.hpp"
+#include "State/Game/DefinitiveGameState.hpp"
+#include "State/Game/HelperGameState.hpp"
 #include "View/Color.hpp"
 #include "View/BoardRendererVisitor.hpp"
 
@@ -17,14 +19,16 @@ Renderer::Renderer()
 
 Renderer::~Renderer() = default;
 
-void Renderer::init_fields(const std::shared_ptr<Game>& game)
+void Renderer::init_game()
 {
-	game_ = game;
+	const std::string path = "resources/puzzle.4x4";
+	game_ = std::make_shared<Game>(path, std::make_unique<DefinitiveGameState>());
 }
 
 void Renderer::start()
 {
 	auto status = initialize();
+	game_->start();
 }
 
 void Renderer::render()
@@ -46,6 +50,14 @@ void Renderer::render()
 				close();
 				break;
 			case SDL_KEYDOWN:
+				if (evt.key.keysym.sym == SDLK_d)
+				{
+					game_->set_game_state(std::make_unique<DefinitiveGameState>());
+				}
+				else if (evt.key.keysym.sym == SDLK_h)
+				{
+					game_->set_game_state(std::make_unique<HelperGameState>());
+				}
 				leaf = game_->get_searcher_target();
 				if (leaf != nullptr)
 				{
@@ -62,7 +74,7 @@ void Renderer::render()
 
 					if (input_value >= 0 && input_value <= 9)
 					{
-						leaf->set_value(input_value);
+						game_->set_cell_value(*leaf, input_value);
 					}
 				}
 				break;
