@@ -1,8 +1,5 @@
 #include "Strategy/FourByFourReader.hpp"
 
-#include <ostream>
-
-#include "CellAttributes.hpp"
 #include "Composite/Composite.hpp"
 #include "Composite/Leaf.hpp"
 
