@@ -8,7 +8,7 @@ public:
 	explicit Color();
 	explicit Color(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha);
 
-	static const SDL_Color& to_sdl(const Color& color);
+	static SDL_Color to_sdl(const Color& color);
 
 	[[nodiscard]] uint8_t r() const;
 	void set_r(uint8_t r);

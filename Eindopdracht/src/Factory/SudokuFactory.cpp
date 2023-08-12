@@ -8,7 +8,7 @@
 
 std::shared_ptr<Component> SudokuFactory::create(const std::string& str)
 {
-	CellFactory cell_factory;
+	const CellFactory cell_factory;
 	const auto size = static_cast<int>(sqrt(str.length()));
 	const auto sudoku = std::make_shared<Composite>();
 	std::vector<std::shared_ptr<Composite>> sections(size);
@@ -31,7 +31,7 @@ std::shared_ptr<Component> SudokuFactory::create(const std::string& str)
 		}
 	}
 
-	for (const auto section : sections)
+	for (const auto& section : sections)
 	{
 		sudoku->add_child(section);
 	}

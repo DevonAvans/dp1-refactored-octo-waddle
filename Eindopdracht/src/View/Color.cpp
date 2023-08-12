@@ -10,7 +10,7 @@ Color::Color(const uint8_t red, const uint8_t green, const uint8_t blue, const u
 {
 }
 
-const SDL_Color& Color::to_sdl(const Color& color)
+SDL_Color Color::to_sdl(const Color& color)
 {
 	return {color.r(), color.g(), color.b(), color.a()};
 }

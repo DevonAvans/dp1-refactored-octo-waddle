@@ -13,17 +13,19 @@ public:
 
 	void accept(Visitor* visitor) override;
 
-	[[nodiscard]] int get_value() const override;
-	void set_value(int value);
-	[[nodiscard]] CellAttributes get_attributes() const;
-
 	void set_state(std::unique_ptr<CellState> state);
 
-	[[nodiscard]] std::vector<int> get_candidates() const;
+	[[nodiscard]] CellAttributes get_attributes() const;
+
+	void set_value(int value);
+	[[nodiscard]] int get_value() const;
+
 	void add_candidates(int candidate);
 	void remove_candidates(int canidate);
+	[[nodiscard]] std::vector<int> get_candidates() const;
+
 	[[nodiscard]] bool is_valid() const override;
-	void set_valid(const bool valid) override;
+	void set_valid(bool valid) override;
 
 private:
 	std::unique_ptr<CellState> current_state_;
