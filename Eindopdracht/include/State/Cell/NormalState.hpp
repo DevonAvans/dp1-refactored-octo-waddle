@@ -1,7 +1,7 @@
 #pragma once
 #include "CellState.hpp"
 
-class FinalState : public CellState
+class NormalState final : public CellState
 {
 public:
 	void set_value(Leaf& cell, int value) override;

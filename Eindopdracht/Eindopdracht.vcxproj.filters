@@ -66,13 +66,13 @@
     <ClCompile Include="src\Visitor\CellSearchVisitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\State\FinalState.cpp">
+    <ClCompile Include="src\State\Cell\FinalState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\State\HelperState.cpp">
+    <ClCompile Include="src\State\Cell\NormalState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\State\EmptyState.cpp">
+    <ClCompile Include="src\State\Cell\EmptyState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\View\BoardRendererVisitor.cpp">
@@ -93,7 +93,7 @@
     <ClCompile Include="src\Factory\SudokuFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\State\CellState.cpp">
+    <ClCompile Include="src\State\Cell\CellState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -158,16 +158,16 @@
     <ClInclude Include="include\Visitor\CellSearchVisitor.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\State\CellState.hpp">
+    <ClInclude Include="include\State\Cell\CellState.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\State\FinalState.hpp">
+    <ClInclude Include="include\State\Cell\FinalState.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\State\HelperState.hpp">
+    <ClInclude Include="include\State\Cell\NormalState.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\State\EmptyState.hpp">
+    <ClInclude Include="include\State\Cell\EmptyState.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\CellAttributes.hpp">

@@ -1,7 +1,7 @@
-#include "State/EmptyState.hpp"
+#include "State/Cell/EmptyState.hpp"
 
 #include "Composite/Leaf.hpp"
-#include "State/HelperState.hpp"
+#include "State/Cell/NormalState.hpp"
 
 
 void EmptyState::set_value(Leaf& cell, const int value)
@@ -11,7 +11,7 @@ void EmptyState::set_value(Leaf& cell, const int value)
 		return;
 	}
 	set_cell_value(cell, value);
-	cell.set_state(std::make_unique<HelperState>());
+	cell.set_state(std::make_unique<NormalState>());
 }
 
 void EmptyState::set_valid(Leaf& cell, const bool value)

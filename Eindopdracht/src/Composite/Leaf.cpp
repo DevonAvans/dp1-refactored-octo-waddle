@@ -1,6 +1,5 @@
 #include "Composite/Leaf.hpp"
 
-#include "State/CellState.hpp"
 #include "Visitor/Visitor.hpp"
 
 Leaf::Leaf(CellAttributes attributes, const int initial_value, std::unique_ptr<CellState> state) :

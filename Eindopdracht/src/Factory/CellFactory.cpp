@@ -1,8 +1,8 @@
 #include "Factory/CellFactory.hpp"
 
 #include "Composite/Leaf.hpp"
-#include "State/EmptyState.hpp"
-#include "State/FinalState.hpp"
+#include "State/Cell/EmptyState.hpp"
+#include "State/Cell/FinalState.hpp"
 
 std::shared_ptr<Component> CellFactory::create(const CellAttributes& attributes, const int initial_value) const
 {

@@ -1,4 +1,4 @@
-#include "State/CellState.hpp"
+#include "State/Cell/CellState.hpp"
 
 #include "Composite/Leaf.hpp"
 

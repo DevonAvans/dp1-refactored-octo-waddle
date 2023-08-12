@@ -4,7 +4,7 @@
 
 #include "CellAttributes.hpp"
 #include "Component.hpp"
-#include "State/CellState.hpp"
+#include "State/Cell/CellState.hpp"
 
 class Leaf final : public Component
 {

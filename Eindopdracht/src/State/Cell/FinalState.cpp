@@ -1,4 +1,4 @@
-#include "State/FinalState.hpp"
+#include "State/Cell/FinalState.hpp"
 
 
 void FinalState::set_value(Leaf& cell, int value)
