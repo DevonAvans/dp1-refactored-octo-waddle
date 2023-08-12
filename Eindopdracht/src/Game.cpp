@@ -17,18 +17,6 @@ Game::Game(const std::string& file_path, std::unique_ptr<GameState> state) : qui
 	validator_ = std::make_unique<ValidationVisitor>(21);
 }
 
-void Game::start()
-{
-	//const auto visitor = new SudokuVisitor();
-
-	//change_final_state_value();
-	//change_empty_to_helper();
-}
-
-void Game::update()
-{
-}
-
 void Game::stop()
 {
 	quit_ = true;
@@ -50,7 +38,7 @@ Leaf* Game::get_searcher_target() const
 	return searcher_->get_cell();
 }
 
-bool Game::is_valid() const
+bool Game::solved() const
 {
 	return sudoku_->is_valid();
 }

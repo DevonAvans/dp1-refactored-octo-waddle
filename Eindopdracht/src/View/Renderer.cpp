@@ -19,16 +19,16 @@ Renderer::Renderer()
 
 Renderer::~Renderer() = default;
 
-void Renderer::init_game()
+void Renderer::init_game(const std::string& path)
 {
-	const std::string path = "resources/puzzle.4x4";
 	game_ = std::make_shared<Game>(path, std::make_unique<DefinitiveGameState>());
 }
 
 void Renderer::start()
 {
 	auto status = initialize();
-	game_->start();
+	drawer_ = std::make_unique<BoardRendererVisitor>(CELL_SIZE, renderer_, normal_font_, smal_font_);
+	render();
 }
 
 void Renderer::render()
@@ -53,8 +53,6 @@ void Renderer::render()
 				if (evt.key.keysym.sym == SDLK_c)
 				{
 					game_->check();
-					auto c = game_->is_valid();
-					const auto done = true;
 				}
 				else if (evt.key.keysym.sym == SDLK_d)
 				{
@@ -91,10 +89,7 @@ void Renderer::render()
 					x = evt.button.x;
 					y = evt.button.y;
 
-				//const auto samurai_size = 12;
-
 					game_->set_searcher_target(y / CELL_SIZE, x / CELL_SIZE);
-				//hightlight_square({x, y});
 					break;
 				default: ;
 				}
@@ -105,13 +100,8 @@ void Renderer::render()
 			SDL_SetRenderDrawColor(renderer_, 255, 255, 255, 255);
 			SDL_RenderClear(renderer_);
 
-			draw_normal_board();
-			/*
-			if (square_.x >= 0)
-				draw_highlighted_square();
-			draw_highlighted_row();
-			*/
-			draw_highlighted_square();
+			draw();
+			draw_highlight();
 
 			SDL_RenderPresent(renderer_);
 			leaf = nullptr;
@@ -128,11 +118,13 @@ void Renderer::close()
 	SDL_Quit();
 }
 
-void Renderer::hightlight_square()
+void Renderer::draw() const
 {
+	const std::shared_ptr<Component> sudoku = game_->get_sudoku();
+	drawer_->render_sudoku(sudoku);
 }
 
-void Renderer::draw_highlighted_square() const
+void Renderer::draw_highlight() const
 {
 	const auto leaf = game_->get_searcher_target();
 	if (leaf == nullptr) { return; }
@@ -150,69 +142,6 @@ void Renderer::draw_highlighted_square() const
 	SDL_RenderFillRect(renderer_, &selectedRect);
 }
 
-void Renderer::draw_highlighted_row() const
-{
-	const auto& [r, g, b, a] = Color::to_sdl(Color::red());
-	SDL_SetRenderDrawColor(renderer_, r, g, b, a);
-	//const SDL_Rect rect{0, square_.y, SIZE * CELL_SIZE + 1, CELL_SIZE};
-	//SDL_RenderDrawRect(renderer_, &rect);
-}
-
-void Renderer::draw_highlighted_col() const
-{
-	/*SDL_SetRenderDrawColor(renderer_, 0, 255, 0, 255);
-	const SDL_Rect rect{square_.x, 0, CELL_SIZE, game_->get_board_size() * CELL_SIZE};
-	SDL_RenderDrawRect(renderer_, &rect);*/
-}
-
-void Renderer::draw_highlighted_collection() const
-{
-}
-
-void Renderer::draw_normal_board() const
-{
-	const std::shared_ptr<Component> sudoku = game_->get_sudoku();
-	BoardRendererVisitor board_r{CELL_SIZE, renderer_, normal_font_, smal_font_};
-	board_r.render_sudoku(sudoku);
-	//auto leaf = std::make_shared<Leaf>(5);
-	//Cell cell{leaf};
-	//cell.render(renderer_, font_);
-
-	/*SDL_SetRenderDrawColor(renderer_, 0, 0, 0, 255);
-
-	for (int i = 0; i <= grid_size; i += CELL_SIZE)
-	{
-		SDL_RenderDrawLine(renderer_, 0 + i, 0, 0 + i, 0 + grid_size);
-	}
-
-	for (int i = 0; i <= grid_size; i += CELL_SIZE)
-	{
-		SDL_RenderDrawLine(renderer_, 0, 0 + i, 0 + grid_size, 0 + i);
-	}
-
-	SDL_SetRenderDrawColor(renderer_, 255, 0, 0, 255);
-
-	for (int i = 0; i <= grid_size; i += static_cast<int>(sqrt(board_size)) * CELL_SIZE)
-	{
-		SDL_RenderDrawLine(renderer_, 0 + i, 0, 0 + i, 0 + grid_size);
-	}
-
-	for (int i = 0; i <= grid_size; i += static_cast<int>(sqrt(board_size)) * CELL_SIZE)
-	{
-		SDL_RenderDrawLine(renderer_, 0, 0 + i, 0 + grid_size, 0 + i);
-	}*/
-}
-
-void Renderer::draw_samurai_board() const
-{
-}
-
-void Renderer::find_square(const Vector2 pos) const
-{
-	int row = pos.y / CELL_SIZE;
-	int col = pos.x / CELL_SIZE;
-}
-
 int Renderer::initialize()
 {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
@@ -221,7 +150,7 @@ int Renderer::initialize()
 		return 1;
 	}
 
-	window_ = SDL_CreateWindow("Hallo",
+	window_ = SDL_CreateWindow("Design Patterns 1",
 	                           SDL_WINDOWPOS_UNDEFINED,
 	                           SDL_WINDOWPOS_UNDEFINED,
 	                           SCREEN_WIDTH,
@@ -268,6 +197,5 @@ int Renderer::initialize()
 		close();
 	}
 
-	render();
 	return 0;
 }

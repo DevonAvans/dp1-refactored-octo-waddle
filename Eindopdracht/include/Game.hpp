@@ -12,15 +12,13 @@ class Game final
 {
 public:
 	explicit Game(const std::string& file_path, std::unique_ptr<GameState> state);
-	void start();
-	void update();
 	void stop();
 
 	std::shared_ptr<Component> get_sudoku();
 	void set_searcher_target(int row, int col, int sudoku = 0) const;
 	[[nodiscard]] Leaf* get_searcher_target() const;
 
-	bool is_valid() const;
+	[[nodiscard]] bool solved() const;
 	void check();
 	void set_game_state(std::unique_ptr<GameState> state);
 	void set_cell_value(Leaf& cell, int value) const;

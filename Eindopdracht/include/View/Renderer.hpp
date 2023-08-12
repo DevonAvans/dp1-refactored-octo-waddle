@@ -3,6 +3,7 @@
 #include <memory>
 #include <SDL.h>
 #include <SDL_ttf.h>
+#include <string>
 #include <thread>
 
 #include "Vector2.h"
@@ -30,7 +31,7 @@ public:
 	Renderer& operator=(const Renderer& other) = delete;
 	Renderer& operator=(Renderer&& other) noexcept = delete;
 
-	void init_game();
+	void init_game(const std::string& path);
 	void start();
 	void render();
 	void close();
@@ -45,21 +46,11 @@ private:
 	TTF_Font* smal_font_{};
 
 	std::shared_ptr<Game> game_;
+	std::unique_ptr<BoardRendererVisitor> drawer_;
 	bool quit_;
 
-	//Vector2 square_;
-
-	void hightlight_square();
-	void draw_highlighted_square() const;
-
-	void draw_highlighted_row() const;
-	void draw_highlighted_col() const;
-	void draw_highlighted_collection() const;
-
-	void draw_normal_board() const;
-	void draw_samurai_board() const;
-
-	void find_square(Vector2 pos) const;
+	void draw() const;
+	void draw_highlight() const;
 
 	[[nodiscard]] int initialize();
 };
