@@ -27,9 +27,9 @@ std::shared_ptr<Component> Game::get_sudoku()
 	return sudoku_;
 }
 
-void Game::set_searcher_target(const int row, const int col, const int sudoku) const
+void Game::set_searcher_target(const int row, const int col) const
 {
-	searcher_->set_target(row, col, sudoku);
+	searcher_->set_target(row, col);
 	sudoku_->accept(searcher_);
 }
 

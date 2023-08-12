@@ -5,5 +5,5 @@
 class CellFactory
 {
 public:
-	std::shared_ptr<Component> create(const CellAttributes& attributes, int initial_value) const;
+	[[nodiscard]] std::shared_ptr<Component> create(const CellAttributes& attributes, int initial_value) const;
 };

@@ -8,5 +8,5 @@ public:
 	std::shared_ptr<Component> read(const std::string& path) override;
 
 private:
-	int size_ = 4;
+	const int size_ = 4;
 };

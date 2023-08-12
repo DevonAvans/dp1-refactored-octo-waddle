@@ -11,7 +11,7 @@ class ReaderContext
 {
 public:
 	ReaderContext();
-	~ReaderContext();
+	~ReaderContext() = default;
 
 	std::shared_ptr<Component> read(const std::string& path);
 

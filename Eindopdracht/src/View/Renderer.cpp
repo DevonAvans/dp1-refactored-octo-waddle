@@ -21,7 +21,7 @@ Renderer::~Renderer() = default;
 
 void Renderer::init_game(const std::string& path)
 {
-	game_ = std::make_shared<Game>(path, std::make_unique<DefinitiveGameState>());
+	game_ = std::make_unique<Game>(path, std::make_unique<DefinitiveGameState>());
 }
 
 void Renderer::start()

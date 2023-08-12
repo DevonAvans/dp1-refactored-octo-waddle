@@ -1,5 +1,6 @@
 #include "Strategy/ReaderContext.hpp"
 
+#include "Builder/StandardBuilder.hpp"
 #include "Strategy/FourByFourReader.hpp"
 #include "Strategy/JigsawReader.hpp"
 #include "Strategy/NineByNineReader.hpp"
@@ -13,10 +14,6 @@ ReaderContext::ReaderContext()
 	dictionairy_[".9x9"] = std::make_shared<NineByNineReader>();
 	dictionairy_[".samurai"] = std::make_shared<SamuraiReader>();
 	dictionairy_[".jigsaw"] = std::make_shared<JigsawReader>();
-}
-
-ReaderContext::~ReaderContext()
-{
 }
 
 std::shared_ptr<Component> ReaderContext::read(const std::string& path)

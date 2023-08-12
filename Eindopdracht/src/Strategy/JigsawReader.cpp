@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "CellAttributes.hpp"
+#include "Builder/StandardBuilder.hpp"
 #include "Composite/Composite.hpp"
 #include "Composite/Leaf.hpp"
 
@@ -17,13 +17,9 @@ std::shared_ptr<Component> JigsawReader::read(const std::string& path)
 
 	str = str.substr(prefix_.length());
 
-	const auto sudoku = std::make_shared<Composite>();
-	std::vector<std::shared_ptr<Composite>> sections(size_);
+	const auto builder = std::make_unique<StandardBuilder>();
 
-	for (int i = 0; i < size_; ++i)
-	{
-		sections[i] = std::make_shared<Composite>();
-	}
+	builder->build_size(size_);
 
 	std::vector<std::string> segments;
 	size_t start = 0;
@@ -36,7 +32,7 @@ std::shared_ptr<Component> JigsawReader::read(const std::string& path)
 			end = str.length();
 		}
 
-		const auto segment = str.substr(start, end - start);
+		const auto& segment = str.substr(start, end - start);
 		if (!segment.empty())
 		{
 			segments.push_back(segment);
@@ -64,15 +60,9 @@ std::shared_ptr<Component> JigsawReader::read(const std::string& path)
 			const int row = i / 9;
 			const int col = i % 9;
 
-			//sections[section]->add_child(
-			//std::make_shared<Leaf>(CellAttributes{row, col, section}, value));
+			builder->build_cell({row, col, section}, value);
 		}
 	}
 
-	for (const auto& section : sections)
-	{
-		sudoku->add_child(section);
-	}
-
-	return sudoku;
+	return builder->get();
 }

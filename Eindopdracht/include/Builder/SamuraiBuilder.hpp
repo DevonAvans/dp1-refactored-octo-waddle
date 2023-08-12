@@ -5,6 +5,7 @@
 
 #include "SudokuBuilder.hpp"
 
+class Component;
 class Composite;
 
 struct Offset
@@ -12,11 +13,11 @@ struct Offset
 	int row, col;
 };
 
-class SamuraiBuilder final : public SudokuBuilder
+class SamuraiBuilder final
 {
 public:
 	SamuraiBuilder();
-	std::shared_ptr<Component> get() override;
+	std::shared_ptr<Component> get();
 
 	void create_top_left(const std::string& data) const;
 	void create_top_right(const std::string& data) const;

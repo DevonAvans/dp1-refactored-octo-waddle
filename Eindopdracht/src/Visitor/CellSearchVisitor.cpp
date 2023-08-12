@@ -1,7 +1,7 @@
 #include "Visitor/CellSearchVisitor.hpp"
 
 CellSearchVisitor::CellSearchVisitor()
-	: target_row_{0}, target_col_{0}, target_sudoku_{0}
+	: target_row_{0}, target_col_{0}
 {
 }
 
@@ -27,11 +27,10 @@ void CellSearchVisitor::visit_composite(Composite* composite)
 	}
 }
 
-void CellSearchVisitor::set_target(const int row, const int col, const int sudoku)
+void CellSearchVisitor::set_target(const int row, const int col)
 {
 	target_row_ = row;
 	target_col_ = col;
-	target_sudoku_ = sudoku;
 	cell_ = nullptr;
 }
 

@@ -45,7 +45,7 @@ private:
 	TTF_Font* normal_font_{};
 	TTF_Font* smal_font_{};
 
-	std::shared_ptr<Game> game_;
+	std::unique_ptr<Game> game_;
 	std::unique_ptr<BoardRendererVisitor> drawer_;
 	bool quit_;
 
