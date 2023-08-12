@@ -20,7 +20,8 @@ public:
 	void set_searcher_target(int row, int col, int sudoku = 0) const;
 	[[nodiscard]] Leaf* get_searcher_target() const;
 
-	void check() const;
+	bool is_valid() const;
+	void check();
 	void set_game_state(std::unique_ptr<GameState> state);
 	void set_cell_value(Leaf& cell, int value) const;
 

@@ -13,8 +13,6 @@ public:
 	ReaderContext();
 	~ReaderContext();
 
-	void set_strategy(std::shared_ptr<SudokuReader> reader);
-
 	std::shared_ptr<Component> read(const std::string& path);
 
 private:

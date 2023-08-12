@@ -1,23 +1,13 @@
 #include "Composite/Leaf.hpp"
 
 #include "State/CellState.hpp"
-#include "State/EmptyState.hpp"
-#include "State/FinalState.hpp"
 #include "Visitor/Visitor.hpp"
 
-Leaf::Leaf(CellAttributes attributes, const int initial_value) :
-	current_state_{nullptr},
+Leaf::Leaf(CellAttributes attributes, const int initial_value, std::unique_ptr<CellState> state) :
+	current_state_{std::move(state)},
 	attributes_{attributes},
 	value_{initial_value}
 {
-	if (initial_value != 0)
-	{
-		set_state(new FinalState());
-	}
-	else
-	{
-		set_state(new EmptyState());
-	}
 }
 
 void Leaf::accept(Visitor* visitor)
@@ -33,6 +23,7 @@ int Leaf::get_value() const
 void Leaf::set_value(const int value)
 {
 	current_state_->set_value(*this, value);
+	valid_ = true;
 	candidates_.clear();
 }
 
@@ -41,9 +32,9 @@ CellAttributes Leaf::get_attributes() const
 	return attributes_;
 }
 
-void Leaf::set_state(CellState* state)
+void Leaf::set_state(std::unique_ptr<CellState> state)
 {
-	current_state_ = state;
+	current_state_ = std::move(state);
 }
 
 std::vector<int> Leaf::get_candidates() const
@@ -68,4 +59,14 @@ void Leaf::add_candidates(const int candidate)
 void Leaf::remove_candidates(const int canidate)
 {
 	std::erase(candidates_, canidate);
+}
+
+bool Leaf::is_valid() const
+{
+	return value_ != 0 && valid_;
+}
+
+void Leaf::set_valid(const bool valid)
+{
+	current_state_->set_valid(*this, valid);
 }

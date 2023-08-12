@@ -92,9 +92,8 @@ void SamuraiBuilder::ching_chong(std::vector<std::shared_ptr<Composite>>& sectio
 		const auto s_n = static_cast<int>(sqrt(9));
 		//// (i / section_size) * num_sections_per_row + (j / section_size);
 		const int section_number = (row / s_n) * s_n + (col / s_n);
-		const auto cell = std::make_shared<Leaf>(CellAttributes(offset.row + row, offset.col + col, section_number),
-		                                         cell_value);
-		sections[section_number]->add_child(cell);
+		//const auto cell = std::make_shared<Leaf>(CellAttributes(offset.row + row, offset.col + col, section_number),cell_value);
+		//sections[section_number]->add_child(cell);
 		++i;
 	}
 }

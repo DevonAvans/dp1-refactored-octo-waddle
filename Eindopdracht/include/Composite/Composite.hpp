@@ -13,6 +13,7 @@ public:
 	[[nodiscard]] int get_value() const override;
 	void accept(Visitor* visitor) override;
 	[[nodiscard]] std::vector<std::shared_ptr<Component>> get_children() const;
+	[[nodiscard]] bool is_valid() const override;
 
 private:
 	std::vector<std::shared_ptr<Component>> children_;

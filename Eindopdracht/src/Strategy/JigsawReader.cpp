@@ -64,8 +64,8 @@ std::shared_ptr<Component> JigsawReader::read(const std::string& path)
 			const int row = i / 9;
 			const int col = i % 9;
 
-			sections[section]->add_child(
-				std::make_shared<Leaf>(CellAttributes{row, col, section}, value));
+			//sections[section]->add_child(
+			//std::make_shared<Leaf>(CellAttributes{row, col, section}, value));
 		}
 	}
 

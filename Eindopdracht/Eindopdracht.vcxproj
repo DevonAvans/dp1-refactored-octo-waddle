@@ -137,6 +137,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Composite\Composite.cpp" />
+    <ClCompile Include="src\Factory\CellFactory.cpp" />
+    <ClCompile Include="src\Factory\SudokuFactory.cpp" />
+    <ClCompile Include="src\State\CellState.cpp" />
     <ClCompile Include="src\State\EmptyState.cpp" />
     <ClCompile Include="src\State\FinalState.cpp" />
     <ClCompile Include="src\State\Game\DefinitiveGameState.cpp" />
@@ -167,6 +170,9 @@
     <ClInclude Include="include\Builder\SudokuBuilder.hpp" />
     <ClInclude Include="include\CellAttributes.hpp" />
     <ClInclude Include="include\Composite\Composite.hpp" />
+    <ClInclude Include="include\Factory\AbstractFactory.hpp" />
+    <ClInclude Include="include\Factory\CellFactory.hpp" />
+    <ClInclude Include="include\Factory\SudokuFactory.hpp" />
     <ClInclude Include="include\State\CellState.hpp" />
     <ClInclude Include="include\State\EmptyState.hpp" />
     <ClInclude Include="include\State\FinalState.hpp" />

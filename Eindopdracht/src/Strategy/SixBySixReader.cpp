@@ -29,8 +29,8 @@ std::shared_ptr<Component> SixBySixReader::read(const std::string& path)
 			const int section_col = j / section_width_;
 			const int section_number = section_row * num_sections_per_row + section_col;
 
-			const auto cell = std::make_shared<Leaf>(CellAttributes(i, j, section_number), cell_value);
-			sections[section_number]->add_child(cell);
+			//const auto cell = std::make_shared<Leaf>(CellAttributes(i, j, section_number), cell_value);
+			//sections[section_number]->add_child(cell);
 		}
 	}
 

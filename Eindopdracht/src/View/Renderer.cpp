@@ -21,7 +21,7 @@ Renderer::~Renderer() = default;
 
 void Renderer::init_game()
 {
-	const std::string path = "resources/puzzle.samurai";
+	const std::string path = "resources/puzzle.4x4";
 	game_ = std::make_shared<Game>(path, std::make_unique<DefinitiveGameState>());
 }
 
@@ -50,7 +50,13 @@ void Renderer::render()
 				close();
 				break;
 			case SDL_KEYDOWN:
-				if (evt.key.keysym.sym == SDLK_d)
+				if (evt.key.keysym.sym == SDLK_c)
+				{
+					game_->check();
+					auto c = game_->is_valid();
+					const auto done = true;
+				}
+				else if (evt.key.keysym.sym == SDLK_d)
 				{
 					game_->set_game_state(std::make_unique<DefinitiveGameState>());
 				}
@@ -220,7 +226,7 @@ int Renderer::initialize()
 	                           SDL_WINDOWPOS_UNDEFINED,
 	                           SCREEN_WIDTH,
 	                           SCREEN_HEIGHT,
-	                           0);
+	                           SDL_WINDOW_RESIZABLE);
 
 	if (!window_)
 	{

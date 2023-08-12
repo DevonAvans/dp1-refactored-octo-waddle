@@ -19,10 +19,6 @@ ReaderContext::~ReaderContext()
 {
 }
 
-void ReaderContext::set_strategy(std::shared_ptr<SudokuReader> reader)
-{
-}
-
 std::shared_ptr<Component> ReaderContext::read(const std::string& path)
 {
 	const std::string extension = get_extension(path);

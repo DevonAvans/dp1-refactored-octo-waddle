@@ -81,7 +81,7 @@ void BoardRendererVisitor::draw(const Leaf* leaf) const
 
 	if (value != 0)
 	{
-		const SDL_Color text_color = Color::to_sdl(Color::black());
+		const SDL_Color text_color = Color::to_sdl(leaf->is_valid() ? Color::black() : Color::red());
 		SDL_Surface* text_surface = TTF_RenderText_Solid(normal_font_, std::to_string(value).c_str(), text_color);
 		SDL_Texture* text_texture = SDL_CreateTextureFromSurface(renderer_, text_surface);
 
