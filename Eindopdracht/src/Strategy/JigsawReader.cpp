@@ -66,3 +66,8 @@ std::shared_ptr<Component> JigsawReader::read(const std::string& path)
 
 	return builder->get();
 }
+
+int JigsawReader::get_size() const
+{
+	return size_;
+}

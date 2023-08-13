@@ -4,6 +4,7 @@
 
 #include "Command/Command.hpp"
 #include "Command/Key.h"
+#include "Factory/SudokuFactory.hpp"
 #include "State/Game/GameState.hpp"
 #include "Visitor/CellSearchVisitor.hpp"
 #include "Visitor/ValidationVisitor.hpp"
@@ -14,6 +15,7 @@ class Game final
 {
 public:
 	explicit Game(const std::string& file_path, std::unique_ptr<GameState> state);
+	void start(const std::string& file_path);
 	void stop();
 
 	std::shared_ptr<Component> get_sudoku();
@@ -29,9 +31,10 @@ public:
 
 private:
 	bool quit_;
+	std::unique_ptr<SudokuFactory> factory_;
 	std::shared_ptr<Component> sudoku_;
 
-	CellSearchVisitor* searcher_;
+	std::unique_ptr<CellSearchVisitor> searcher_;
 	std::unique_ptr<GameState> state_;
 	std::unique_ptr<ValidationVisitor> validator_;
 	std::unordered_map<key, std::unique_ptr<Command>> dictionary_;

@@ -41,3 +41,8 @@ std::shared_ptr<Component> SamuraiReader::read(const std::string& path)
 
 	return builder.get();
 }
+
+int SamuraiReader::get_size() const
+{
+	return size_;
+}

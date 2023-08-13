@@ -1,5 +1,7 @@
 #include "Factory/SudokuFactory.hpp"
 
+#include <stdexcept>
+
 #include "Strategy/FourByFourReader.hpp"
 #include "Strategy/JigsawReader.hpp"
 #include "Strategy/NineByNineReader.hpp"
@@ -15,16 +17,16 @@ SudokuFactory::SudokuFactory()
 	dictionairy_[".jigsaw"] = std::make_shared<JigsawReader>();
 }
 
-std::shared_ptr<Component> SudokuFactory::create(const std::string& path)
+std::shared_ptr<SudokuReader> SudokuFactory::create(const std::string& path)
 {
 	const std::string extension = get_extension(path);
 
 	if (dictionairy_.contains(extension))
 	{
-		return dictionairy_[extension]->read(path);
+		return dictionairy_[extension];
 	}
 
-	return nullptr;
+	throw std::runtime_error("Extension doesnt exists");
 }
 
 std::string SudokuFactory::get_extension(const std::string& path)

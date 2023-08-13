@@ -139,6 +139,7 @@
     <ClCompile Include="src\Command\CheckCommand.cpp" />
     <ClCompile Include="src\Command\DefinitiveCommand.cpp" />
     <ClCompile Include="src\Command\HelperCommand.cpp" />
+    <ClCompile Include="src\Command\LoadPuzzle.cpp" />
     <ClCompile Include="src\Composite\Composite.cpp" />
     <ClCompile Include="src\Factory\CellFactory.cpp" />
     <ClCompile Include="src\State\Cell\CellState.cpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="include\Command\DefinitiveCommand.hpp" />
     <ClInclude Include="include\Command\HelperCommand.hpp" />
     <ClInclude Include="include\Command\Key.h" />
+    <ClInclude Include="include\Command\LoadPuzzle.hpp" />
     <ClInclude Include="include\Composite\Composite.hpp" />
     <ClInclude Include="include\Factory\CellFactory.hpp" />
     <ClInclude Include="include\State\Cell\CellState.hpp" />

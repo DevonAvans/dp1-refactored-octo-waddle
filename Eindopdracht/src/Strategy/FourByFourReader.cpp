@@ -21,3 +21,8 @@ std::shared_ptr<Component> FourByFourReader::read(const std::string& path)
 	}
 	return builder->get();
 }
+
+int FourByFourReader::get_size() const
+{
+	return size_;
+}

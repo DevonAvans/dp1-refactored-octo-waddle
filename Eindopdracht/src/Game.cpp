@@ -6,21 +6,29 @@
 #include "Command/CheckCommand.hpp"
 #include "Command/DefinitiveCommand.hpp"
 #include "Command/HelperCommand.hpp"
+#include "Command/LoadPuzzle.hpp"
 #include "Factory/SudokuFactory.hpp"
 #include "Visitor/CellSearchVisitor.hpp"
 #include "Visitor/SudokuVisitor.hpp"
+#include "Strategy/SudokuReader.hpp"
 
-Game::Game(const std::string& file_path, std::unique_ptr<GameState> state) : quit_{false}
+Game::Game(const std::string& file_path, std::unique_ptr<GameState> state) :
+	quit_{false}, factory_{std::make_unique<SudokuFactory>()}
 {
-	SudokuFactory context;
-	sudoku_ = context.create(file_path);
+	state_ = std::move(state);
+	start(file_path);
+}
+
+void Game::start(const std::string& file_path)
+{
+	const auto reader = factory_->create(file_path);
+	sudoku_ = reader->read(file_path);
 	if (sudoku_ == nullptr)
 	{
 		throw std::runtime_error("Failed to read Sudoku from file.");
 	}
-	searcher_ = new CellSearchVisitor();
-	state_ = std::move(state);
-	validator_ = std::make_unique<ValidationVisitor>(21);
+	searcher_ = std::make_unique<CellSearchVisitor>();
+	validator_ = std::make_unique<ValidationVisitor>(reader->get_size());
 	load_commands();
 }
 
@@ -37,7 +45,7 @@ std::shared_ptr<Component> Game::get_sudoku()
 void Game::set_searcher_target(const int row, const int col) const
 {
 	searcher_->set_target(row, col);
-	sudoku_->accept(searcher_);
+	sudoku_->accept(searcher_.get());
 }
 
 Leaf* Game::get_searcher_target() const
@@ -76,16 +84,16 @@ void Game::execute_command(const key key)
 
 void Game::load_commands()
 {
-	dictionary_[key::c] = std::make_unique<CheckCommand>(*this);
-	dictionary_[key::d] = std::make_unique<DefinitiveCommand>(*this);
-	dictionary_[key::h] = std::make_unique<HelperCommand>(*this);
-	dictionary_[key::l] = std::make_unique<CheckCommand>(*this);
+	dictionary_[key::Check] = std::make_unique<CheckCommand>(*this);
+	dictionary_[key::Definitive] = std::make_unique<DefinitiveCommand>(*this);
+	dictionary_[key::Helper] = std::make_unique<HelperCommand>(*this);
+	dictionary_[key::LoadPuzzle] = std::make_unique<LoadPuzzle>(*this);
 }
 
 void Game::change_final_state_value() const
 {
 	searcher_->set_target(0, 1);
-	sudoku_->accept(searcher_);
+	sudoku_->accept(searcher_.get());
 	const auto leaf = searcher_->get_cell();
 	leaf->set_value(1);
 	std::cout << "" << std::endl;
@@ -94,7 +102,7 @@ void Game::change_final_state_value() const
 void Game::change_empty_to_helper() const
 {
 	searcher_->set_target(0, 0);
-	sudoku_->accept(searcher_);
+	sudoku_->accept(searcher_.get());
 	const auto leaf2 = searcher_->get_cell();
 	leaf2->set_value(5);
 	std::cout << "" << std::endl;

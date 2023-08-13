@@ -21,3 +21,8 @@ std::shared_ptr<Component> NineByNineReader::read(const std::string& path)
 	}
 	return builder->get();
 }
+
+int NineByNineReader::get_size() const
+{
+	return size_;
+}

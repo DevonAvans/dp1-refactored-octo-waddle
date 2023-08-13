@@ -27,3 +27,8 @@ std::shared_ptr<Component> SixBySixReader::read(const std::string& path)
 
 	return builder->get();
 }
+
+int SixBySixReader::get_size() const
+{
+	return size_;
+}

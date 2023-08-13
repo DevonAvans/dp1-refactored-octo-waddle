@@ -58,15 +58,19 @@ void Renderer::render()
 			case SDL_KEYDOWN:
 				if (evt.key.keysym.sym == SDLK_c)
 				{
-					game_->execute_command(key::c);
+					game_->execute_command(key::Check);
 				}
 				else if (evt.key.keysym.sym == SDLK_d)
 				{
-					game_->execute_command(key::d);
+					game_->execute_command(key::Definitive);
 				}
 				else if (evt.key.keysym.sym == SDLK_h)
 				{
-					game_->execute_command(key::h);
+					game_->execute_command(key::Helper);
+				}
+				else if (evt.key.keysym.sym == SDLK_l)
+				{
+					game_->execute_command(key::LoadPuzzle);
 				}
 				if (game_->get_searcher_target() != nullptr)
 				{
