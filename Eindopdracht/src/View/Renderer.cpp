@@ -4,7 +4,6 @@
 
 #include "Game.hpp"
 #include "State/Game/DefinitiveGameState.hpp"
-#include "State/Game/HelperGameState.hpp"
 #include "View/Color.hpp"
 #include "View/BoardRendererVisitor.hpp"
 
@@ -59,15 +58,15 @@ void Renderer::render()
 			case SDL_KEYDOWN:
 				if (evt.key.keysym.sym == SDLK_c)
 				{
-					game_->check();
+					game_->execute_command(key::c);
 				}
 				else if (evt.key.keysym.sym == SDLK_d)
 				{
-					game_->set_game_state(std::make_unique<DefinitiveGameState>());
+					game_->execute_command(key::d);
 				}
 				else if (evt.key.keysym.sym == SDLK_h)
 				{
-					game_->set_game_state(std::make_unique<HelperGameState>());
+					game_->execute_command(key::h);
 				}
 				if (game_->get_searcher_target() != nullptr)
 				{

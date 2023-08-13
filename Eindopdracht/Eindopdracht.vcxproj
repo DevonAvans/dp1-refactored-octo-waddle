@@ -136,6 +136,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Command\CheckCommand.cpp" />
+    <ClCompile Include="src\Command\DefinitiveCommand.cpp" />
+    <ClCompile Include="src\Command\HelperCommand.cpp" />
     <ClCompile Include="src\Composite\Composite.cpp" />
     <ClCompile Include="src\Factory\CellFactory.cpp" />
     <ClCompile Include="src\Factory\SudokuFactory.cpp" />
@@ -169,6 +172,11 @@
     <ClInclude Include="include\Builder\StandardBuilder.hpp" />
     <ClInclude Include="include\Builder\SudokuBuilder.hpp" />
     <ClInclude Include="include\CellAttributes.hpp" />
+    <ClInclude Include="include\Command\CheckCommand.hpp" />
+    <ClInclude Include="include\Command\Command.hpp" />
+    <ClInclude Include="include\Command\DefinitiveCommand.hpp" />
+    <ClInclude Include="include\Command\HelperCommand.hpp" />
+    <ClInclude Include="include\Command\Key.h" />
     <ClInclude Include="include\Composite\Composite.hpp" />
     <ClInclude Include="include\Factory\AbstractFactory.hpp" />
     <ClInclude Include="include\Factory\CellFactory.hpp" />

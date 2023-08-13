@@ -2,7 +2,10 @@
 
 #include <iostream>
 
-#include "State/Game/DefinitiveGameState.hpp"
+#include "Command/Command.hpp";
+#include "Command/CheckCommand.hpp"
+#include "Command/DefinitiveCommand.hpp"
+#include "Command/HelperCommand.hpp"
 #include "Strategy/ReaderContext.hpp"
 #include "Visitor/CellSearchVisitor.hpp"
 #include "Visitor/SudokuVisitor.hpp"
@@ -18,6 +21,7 @@ Game::Game(const std::string& file_path, std::unique_ptr<GameState> state) : qui
 	searcher_ = new CellSearchVisitor();
 	state_ = std::move(state);
 	validator_ = std::make_unique<ValidationVisitor>(21);
+	load_commands();
 }
 
 void Game::stop()
@@ -46,7 +50,7 @@ bool Game::solved() const
 	return sudoku_->is_valid();
 }
 
-void Game::check()
+void Game::check() const
 {
 	validator_->reset();
 	sudoku_->accept(validator_.get());
@@ -60,6 +64,22 @@ void Game::set_game_state(std::unique_ptr<GameState> state)
 void Game::set_cell_value(Leaf& cell, const int value) const
 {
 	state_->set_number(cell, value);
+}
+
+void Game::execute_command(const key key)
+{
+	if (dictionary_.contains(key))
+	{
+		dictionary_[key]->execute();
+	}
+}
+
+void Game::load_commands()
+{
+	dictionary_[key::c] = std::make_unique<CheckCommand>(*this);
+	dictionary_[key::d] = std::make_unique<DefinitiveCommand>(*this);
+	dictionary_[key::h] = std::make_unique<HelperCommand>(*this);
+	dictionary_[key::l] = std::make_unique<CheckCommand>(*this);
 }
 
 void Game::change_final_state_value() const
