@@ -7,17 +7,16 @@
 
 class SudokuReader;
 
-// TODO: Low binding factory
-class ReaderContext
+class SudokuFactory
 {
 public:
-	ReaderContext();
-	~ReaderContext() = default;
+	SudokuFactory();
+	~SudokuFactory() = default;
 
-	std::shared_ptr<Component> read(const std::string& path);
+	std::shared_ptr<Component> create(const std::string& path);
 
 private:
 	std::map<std::string, std::shared_ptr<SudokuReader>> dictionairy_;
 
-	static std::string get_extension(const std::string& path);
+	std::string get_extension(const std::string& path);
 };

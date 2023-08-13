@@ -159,7 +159,7 @@
     <ClCompile Include="src\Strategy\FourByFourReader.cpp" />
     <ClCompile Include="src\Strategy\JigsawReader.cpp" />
     <ClCompile Include="src\Strategy\NineByNineReader.cpp" />
-    <ClCompile Include="src\Strategy\ReaderContext.cpp" />
+    <ClCompile Include="src\Factory\SudokuFactory.cpp" />
     <ClCompile Include="src\Strategy\SamuraiReader.cpp" />
     <ClCompile Include="src\Strategy\SixBySixReader.cpp" />
     <ClCompile Include="src\Visitor\CellSearchVisitor.cpp" />
@@ -192,7 +192,7 @@
     <ClInclude Include="include\Strategy\FourByFourReader.hpp" />
     <ClInclude Include="include\Strategy\JigsawReader.hpp" />
     <ClInclude Include="include\Strategy\NineByNineReader.hpp" />
-    <ClInclude Include="include\Strategy\ReaderContext.hpp" />
+    <ClInclude Include="include\Factory\SudokuFactory.hpp" />
     <ClInclude Include="include\Strategy\SamuraiReader.hpp" />
     <ClInclude Include="include\Strategy\SixBySixReader.hpp" />
     <ClInclude Include="include\Strategy\SudokuReader.hpp" />

@@ -6,14 +6,14 @@
 #include "Command/CheckCommand.hpp"
 #include "Command/DefinitiveCommand.hpp"
 #include "Command/HelperCommand.hpp"
-#include "Strategy/ReaderContext.hpp"
+#include "Factory/SudokuFactory.hpp"
 #include "Visitor/CellSearchVisitor.hpp"
 #include "Visitor/SudokuVisitor.hpp"
 
 Game::Game(const std::string& file_path, std::unique_ptr<GameState> state) : quit_{false}
 {
-	ReaderContext context;
-	sudoku_ = context.read(file_path);
+	SudokuFactory context;
+	sudoku_ = context.create(file_path);
 	if (sudoku_ == nullptr)
 	{
 		throw std::runtime_error("Failed to read Sudoku from file.");

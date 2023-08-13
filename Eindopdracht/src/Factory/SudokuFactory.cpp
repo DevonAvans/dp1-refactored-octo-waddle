@@ -1,13 +1,12 @@
-#include "Strategy/ReaderContext.hpp"
+#include "Factory/SudokuFactory.hpp"
 
-#include "Builder/StandardBuilder.hpp"
 #include "Strategy/FourByFourReader.hpp"
 #include "Strategy/JigsawReader.hpp"
 #include "Strategy/NineByNineReader.hpp"
 #include "Strategy/SamuraiReader.hpp"
 #include "Strategy/SixBySixReader.hpp"
 
-ReaderContext::ReaderContext()
+SudokuFactory::SudokuFactory()
 {
 	dictionairy_[".4x4"] = std::make_shared<FourByFourReader>();
 	dictionairy_[".6x6"] = std::make_shared<SixBySixReader>();
@@ -16,7 +15,7 @@ ReaderContext::ReaderContext()
 	dictionairy_[".jigsaw"] = std::make_shared<JigsawReader>();
 }
 
-std::shared_ptr<Component> ReaderContext::read(const std::string& path)
+std::shared_ptr<Component> SudokuFactory::create(const std::string& path)
 {
 	const std::string extension = get_extension(path);
 
@@ -28,7 +27,7 @@ std::shared_ptr<Component> ReaderContext::read(const std::string& path)
 	return nullptr;
 }
 
-std::string ReaderContext::get_extension(const std::string& path)
+std::string SudokuFactory::get_extension(const std::string& path)
 {
 	const size_t last_dot_pos = path.find_last_of('.');
 	if (last_dot_pos != std::string::npos)
