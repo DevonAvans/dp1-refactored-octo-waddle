@@ -12,8 +12,7 @@ void ValidationVisitor::visit_composite(Composite* composite)
 {
 	for (const auto& child : composite->get_children())
 	{
-		Leaf* cell = dynamic_cast<Leaf*>(child.get());
-		if (cell)
+		if (auto cell = dynamic_cast<Leaf*>(child.get()))
 		{
 			const auto [row, col, section, sudoku] = cell->get_attributes();
 
@@ -29,12 +28,11 @@ void ValidationVisitor::visit_composite(Composite* composite)
 		}
 	}
 
-	// Check for uniqueness and set valid_ flag accordingly
 	for (int i = 0; i < size_; ++i)
 	{
-		CheckUniquenessAndUpdateValidity(rows_[i]);
-		CheckUniquenessAndUpdateValidity(cols_[i]);
-		CheckUniquenessAndUpdateValidity(sections_[i]);
+		check_uniqueness_and_update_validity(rows_[i]);
+		check_uniqueness_and_update_validity(cols_[i]);
+		check_uniqueness_and_update_validity(sections_[i]);
 	}
 }
 
@@ -46,4 +44,23 @@ void ValidationVisitor::reset()
 	rows_.resize(size_);
 	cols_.resize(size_);
 	sections_.resize(size_);
+}
+
+void ValidationVisitor::check_uniqueness_and_update_validity(const std::vector<Leaf*>& cells)
+{
+	std::unordered_map<int, int> value_counts;
+
+	for (const Leaf* cell : cells)
+	{
+		int value = cell->get_value();
+		value_counts[value]++;
+	}
+
+	for (Leaf* cell : cells)
+	{
+		if (value_counts[cell->get_value()] > 1)
+		{
+			cell->set_valid(false);
+		}
+	}
 }

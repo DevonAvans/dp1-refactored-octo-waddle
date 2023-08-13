@@ -1,6 +1,9 @@
 #pragma once
-#include "AbstractFactory.hpp"
+#include <memory>
+
 #include "CellAttributes.hpp"
+
+class Component;
 
 class CellFactory
 {

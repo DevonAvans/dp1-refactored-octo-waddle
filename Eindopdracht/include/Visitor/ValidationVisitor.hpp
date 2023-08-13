@@ -22,32 +22,5 @@ private:
 	std::vector<std::vector<Leaf*>> cols_;
 	std::vector<std::vector<Leaf*>> sections_;
 
-	bool check_uniqueness(const int value, std::set<int>& set)
-	{
-		if (set.contains(value))
-		{
-			return false; // Value already exists in the set
-		}
-		set.insert(value);
-		return true;
-	}
-
-	void CheckUniquenessAndUpdateValidity(std::vector<Leaf*>& cells)
-	{
-		std::unordered_map<int, int> valueCounts;
-
-		for (Leaf* cell : cells)
-		{
-			int value = cell->get_value();
-			valueCounts[value]++;
-		}
-
-		for (Leaf* cell : cells)
-		{
-			if (valueCounts[cell->get_value()] > 1)
-			{
-				cell->set_valid(false);
-			}
-		}
-	}
+	static void check_uniqueness_and_update_validity(const std::vector<Leaf*>& cells);
 };

@@ -1,7 +1,6 @@
 #include "Strategy/NineByNineReader.hpp"
 
 #include "Builder/StandardBuilder.hpp"
-#include "Factory/SudokuFactory.hpp"
 
 std::shared_ptr<Component> NineByNineReader::read(const std::string& path)
 {
