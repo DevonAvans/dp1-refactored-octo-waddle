@@ -2,8 +2,6 @@
 
 #include <iostream>
 
-#include "Composite/Composite.hpp"
-#include "Composite/Leaf.hpp"
 #include "Game.hpp"
 #include "State/Game/DefinitiveGameState.hpp"
 #include "State/Game/HelperGameState.hpp"
@@ -21,12 +19,22 @@ Renderer::~Renderer() = default;
 
 void Renderer::init_game(const std::string& path)
 {
-	game_ = std::make_unique<Game>(path, std::make_unique<DefinitiveGameState>());
+	try
+	{
+		game_ = std::make_unique<Game>(path, std::make_unique<DefinitiveGameState>());
+	}
+	catch (const std::runtime_error& e)
+	{
+		throw e;
+	}
 }
 
 void Renderer::start()
 {
-	auto status = initialize();
+	if (initialize())
+	{
+		throw std::runtime_error("Renderer init went wrong");
+	}
 	drawer_ = std::make_unique<BoardRendererVisitor>(CELL_SIZE, renderer_, normal_font_, smal_font_);
 	render();
 }
@@ -34,7 +42,6 @@ void Renderer::start()
 void Renderer::render()
 {
 	SDL_Event evt;
-	Leaf* leaf;
 
 	SDL_SetRenderDrawBlendMode(renderer_, SDL_BLENDMODE_BLEND);
 
@@ -62,8 +69,7 @@ void Renderer::render()
 				{
 					game_->set_game_state(std::make_unique<HelperGameState>());
 				}
-				leaf = game_->get_searcher_target();
-				if (leaf != nullptr)
+				if (game_->get_searcher_target() != nullptr)
 				{
 					int input_value = -1; // Initialize with an invalid value
 
@@ -78,7 +84,7 @@ void Renderer::render()
 
 					if (input_value >= 0 && input_value <= 9)
 					{
-						game_->set_cell_value(*leaf, input_value);
+						game_->set_cell_value(*game_->get_searcher_target(), input_value);
 					}
 				}
 				break;
@@ -104,7 +110,6 @@ void Renderer::render()
 			draw_highlight();
 
 			SDL_RenderPresent(renderer_);
-			leaf = nullptr;
 		}
 	}
 }

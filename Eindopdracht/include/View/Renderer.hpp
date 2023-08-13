@@ -4,9 +4,6 @@
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <string>
-#include <thread>
-
-#include "Vector2.h"
 
 class Leaf;
 class BoardRendererVisitor;

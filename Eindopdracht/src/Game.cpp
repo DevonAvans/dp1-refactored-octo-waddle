@@ -10,8 +10,11 @@
 Game::Game(const std::string& file_path, std::unique_ptr<GameState> state) : quit_{false}
 {
 	ReaderContext context;
-	//todo error handle
 	sudoku_ = context.read(file_path);
+	if (sudoku_ == nullptr)
+	{
+		throw std::runtime_error("Failed to read Sudoku from file.");
+	}
 	searcher_ = new CellSearchVisitor();
 	state_ = std::move(state);
 	validator_ = std::make_unique<ValidationVisitor>(21);
