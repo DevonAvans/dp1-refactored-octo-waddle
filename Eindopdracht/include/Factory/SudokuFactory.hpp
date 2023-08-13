@@ -18,5 +18,5 @@ public:
 private:
 	std::map<std::string, std::shared_ptr<SudokuReader>> dictionairy_;
 
-	std::string get_extension(const std::string& path);
+	static std::string get_extension(const std::string& path);
 };

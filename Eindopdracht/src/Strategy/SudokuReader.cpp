@@ -8,10 +8,6 @@ SudokuReader::SudokuReader()
 {
 }
 
-//SudokuReader::SudokuReader(std::unique_ptr<SudokuBuilder> builder): builder_{std::move(builder)}
-//{
-//}
-
 std::string SudokuReader::read_file(const std::string& path) const
 {
 	std::vector<std::vector<std::string>> output;

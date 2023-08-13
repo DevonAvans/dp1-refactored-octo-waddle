@@ -2,14 +2,13 @@
 
 #include <iostream>
 
-#include "Command/Command.hpp";
+#include "Command/Command.hpp"
 #include "Command/CheckCommand.hpp"
 #include "Command/DefinitiveCommand.hpp"
 #include "Command/HelperCommand.hpp"
 #include "Command/LoadPuzzle.hpp"
 #include "Factory/SudokuFactory.hpp"
 #include "Visitor/CellSearchVisitor.hpp"
-#include "Visitor/SudokuVisitor.hpp"
 #include "Strategy/SudokuReader.hpp"
 
 Game::Game(const std::string& file_path, std::unique_ptr<GameState> state) :
@@ -88,22 +87,4 @@ void Game::load_commands()
 	dictionary_[key::Definitive] = std::make_unique<DefinitiveCommand>(*this);
 	dictionary_[key::Helper] = std::make_unique<HelperCommand>(*this);
 	dictionary_[key::LoadPuzzle] = std::make_unique<LoadPuzzle>(*this);
-}
-
-void Game::change_final_state_value() const
-{
-	searcher_->set_target(0, 1);
-	sudoku_->accept(searcher_.get());
-	const auto leaf = searcher_->get_cell();
-	leaf->set_value(1);
-	std::cout << "" << std::endl;
-}
-
-void Game::change_empty_to_helper() const
-{
-	searcher_->set_target(0, 0);
-	sudoku_->accept(searcher_.get());
-	const auto leaf2 = searcher_->get_cell();
-	leaf2->set_value(5);
-	std::cout << "" << std::endl;
 }

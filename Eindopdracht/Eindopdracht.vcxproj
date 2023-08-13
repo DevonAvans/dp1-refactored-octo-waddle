@@ -149,6 +149,7 @@
     <ClCompile Include="src\State\Game\HelperGameState.cpp" />
     <ClCompile Include="src\State\Cell\NormalState.cpp" />
     <ClCompile Include="src\Strategy\SudokuReader.cpp" />
+    <ClCompile Include="src\Util.cpp" />
     <ClCompile Include="src\View\BoardRendererVisitor.cpp" />
     <ClCompile Include="src\View\Color.cpp" />
     <ClCompile Include="src\Composite\Leaf.cpp" />
@@ -164,7 +165,6 @@
     <ClCompile Include="src\Strategy\SamuraiReader.cpp" />
     <ClCompile Include="src\Strategy\SixBySixReader.cpp" />
     <ClCompile Include="src\Visitor\CellSearchVisitor.cpp" />
-    <ClCompile Include="src\Visitor\SudokuVisitor.cpp" />
     <ClCompile Include="src\Visitor\ValidationVisitor.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +187,7 @@
     <ClInclude Include="include\State\Game\GameState.hpp" />
     <ClInclude Include="include\State\Game\HelperGameState.hpp" />
     <ClInclude Include="include\State\Cell\NormalState.hpp" />
+    <ClInclude Include="include\Util.hpp" />
     <ClInclude Include="include\View\Color.hpp" />
     <ClInclude Include="include\Game.hpp" />
     <ClInclude Include="include\Composite\Leaf.hpp" />
@@ -202,7 +203,6 @@
     <ClInclude Include="include\View\BoardRendererVisitor.hpp" />
     <ClInclude Include="include\View\Vector2.h" />
     <ClInclude Include="include\Visitor\CellSearchVisitor.hpp" />
-    <ClInclude Include="include\Visitor\SudokuVisitor.hpp" />
     <ClInclude Include="include\Visitor\ValidationVisitor.hpp" />
     <ClInclude Include="include\Visitor\Visitor.hpp" />
   </ItemGroup>

@@ -3,6 +3,8 @@
 
 #include <vector>
 
+#include "Util.hpp"
+
 SamuraiBuilder::SamuraiBuilder():
 	value_{std::make_shared<Composite>()}
 {
@@ -85,7 +87,7 @@ void SamuraiBuilder::ching_chong(std::vector<std::shared_ptr<Composite>>& sectio
 	{
 		const int row = i / 9;
 		const int col = i % 9;
-		const auto cell_value = std::stoi(std::string(1, ch));
+		const auto cell_value = utils::safe_stoi(std::string(1, ch));
 		const auto s_n = static_cast<int>(sqrt(9));
 		//// (i / section_size) * num_sections_per_row + (j / section_size);
 		const int section_number = (row / s_n) * s_n + (col / s_n);

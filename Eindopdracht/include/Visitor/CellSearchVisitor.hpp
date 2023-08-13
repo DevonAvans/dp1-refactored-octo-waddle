@@ -1,7 +1,7 @@
 #pragma once
 #include "Visitor.hpp"
 
-class CellSearchVisitor : public Visitor
+class CellSearchVisitor final : public Visitor
 {
 public:
 	explicit CellSearchVisitor();

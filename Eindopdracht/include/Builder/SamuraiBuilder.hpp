@@ -18,7 +18,7 @@ class SamuraiBuilder final : public SudokuBuilder
 {
 public:
 	SamuraiBuilder();
-	std::shared_ptr<Component> get();
+	std::shared_ptr<Component> get() override;
 
 	void create_top_left(const std::string& data) const;
 	void create_top_right(const std::string& data) const;

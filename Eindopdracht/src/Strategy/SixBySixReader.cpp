@@ -1,5 +1,6 @@
 #include "Strategy/SixBySixReader.hpp"
 
+#include "Util.hpp"
 #include "Builder/StandardBuilder.hpp"
 
 std::shared_ptr<Component> SixBySixReader::read(const std::string& path)
@@ -15,7 +16,7 @@ std::shared_ptr<Component> SixBySixReader::read(const std::string& path)
 		for (int j = 0; j < size_; ++j)
 		{
 			const auto index = i * size_ + j;
-			const auto cell_value = std::stoi(str.substr(index, 1));
+			const auto cell_value = utils::safe_stoi(str.substr(index, 1));
 
 			const int section_row = i / section_height_;
 			const int section_col = j / section_width_;
