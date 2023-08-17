@@ -13,12 +13,16 @@ namespace test::game_state
 	public:
 		TEST_METHOD(change_value_definitive_game_state)
 		{
+			// Arrange
 			const auto expected_value = 3;
 			const auto game = std::make_unique<Game>(path_, std::make_unique<DefinitiveGameState>());
 			game->set_searcher_target(0, 0);
 			const auto cell = game->get_searcher_target();
+
+			// Act
 			game->set_cell_value(*cell, expected_value);
 
+			// Assert
 			Assert::AreEqual(cell->get_value(), expected_value,
 			                 L"Cell value is changed. Cell value is 3, candidates are empty");
 			Assert::AreEqual(std::empty(cell->get_candidates()), true,
