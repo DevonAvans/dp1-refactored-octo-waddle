@@ -18,11 +18,49 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\BoardRendererVisitor.hpp" />
+    <ClInclude Include="include\Color.hpp" />
+    <ClInclude Include="include\Renderer.hpp" />
+    <ClInclude Include="include\Vector2.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\BoardRendererVisitor.cpp" />
+    <ClCompile Include="src\Color.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Renderer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Eindopdracht\Eindopdracht.vcxproj">
+      <Project>{4286cd7d-928f-44f6-be1c-a8203beb8f9d}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="resources\fonts\Roboto-Bold.ttf" />
+    <Font Include="resources\fonts\Roboto-Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\puzzle.4x4" />
+    <None Include="resources\puzzle.6x6" />
+    <None Include="resources\puzzle.9x9" />
+    <None Include="resources\puzzle.jigsaw" />
+    <None Include="resources\puzzle.samurai" />
+    <None Include="resources\puzzle2.4x4" />
+    <None Include="resources\puzzle2.6x6" />
+    <None Include="resources\puzzle2.9x9" />
+    <None Include="resources\puzzle2.jigsaw" />
+    <None Include="resources\puzzle2.samurai" />
+    <None Include="resources\puzzle3.4x4" />
+    <None Include="resources\puzzle3.6x6" />
+    <None Include="resources\puzzle3.9x9" />
+    <None Include="resources\puzzle3.jigsaw" />
+    <None Include="resources\puzzle3.samurai" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{4286cd7d-928f-44f6-be1c-a8203beb8f9d}</ProjectGuid>
-    <RootNamespace>Eindopdracht</RootNamespace>
+    <ProjectGuid>{03b7b413-bc1b-4268-a75a-281f0b140254}</ProjectGuid>
+    <RootNamespace>View</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -40,7 +78,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -71,9 +109,9 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(ProjectDir)include;C:\Users\Devon\Documents\Avans\Blok12\dp1-refactored-octo-waddle\Eindopdracht\include;$(IncludePath)</IncludePath>
     <ExternalIncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)\libs\SDL2\include;$(ProjectDir)\libs\SDL2_image\include;$(ProjectDir)\libs\SDL2_ttf\include;$(IncludePath);$(ExternalIncludePath)</ExternalIncludePath>
     <LibraryPath>$(ProjectDir)libs\SDL2\lib\x64;$(ProjectDir)libs\SDL2_image\lib\x64;$(ProjectDir)libs\SDL2_ttf\lib\x64;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(ProjectDir)include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -109,13 +147,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(SolutionDir)Eindopdracht\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)libs\SDL2_ttf\lib\x64;$(ProjectDir)libs\SDL2\lib\x64;$(ProjectDir)libs\SDL2_image\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)Eindopdracht\include;$(ProjectDir)libs\SDL2_ttf\lib\x64;$(ProjectDir)libs\SDL2\lib\x64;$(ProjectDir)libs\SDL2_image\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -135,70 +173,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="src\Command\CheckCommand.cpp" />
-    <ClCompile Include="src\Command\DefinitiveCommand.cpp" />
-    <ClCompile Include="src\Command\HelperCommand.cpp" />
-    <ClCompile Include="src\Command\LoadPuzzle.cpp" />
-    <ClCompile Include="src\Composite\Composite.cpp" />
-    <ClCompile Include="src\Factory\CellFactory.cpp" />
-    <ClCompile Include="src\State\Cell\CellState.cpp" />
-    <ClCompile Include="src\State\Cell\EmptyState.cpp" />
-    <ClCompile Include="src\State\Cell\FinalState.cpp" />
-    <ClCompile Include="src\State\Game\DefinitiveGameState.cpp" />
-    <ClCompile Include="src\State\Game\HelperGameState.cpp" />
-    <ClCompile Include="src\State\Cell\NormalState.cpp" />
-    <ClCompile Include="src\Strategy\SudokuReader.cpp" />
-    <ClCompile Include="src\Util.cpp" />
-    <ClCompile Include="src\Composite\Leaf.cpp" />
-    <ClCompile Include="src\Game.cpp" />
-    <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\Builder\SamuraiBuilder.cpp" />
-    <ClCompile Include="src\Builder\StandardBuilder.cpp" />
-    <ClCompile Include="src\Strategy\FourByFourReader.cpp" />
-    <ClCompile Include="src\Strategy\JigsawReader.cpp" />
-    <ClCompile Include="src\Strategy\NineByNineReader.cpp" />
-    <ClCompile Include="src\Factory\SudokuFactory.cpp" />
-    <ClCompile Include="src\Strategy\SamuraiReader.cpp" />
-    <ClCompile Include="src\Strategy\SixBySixReader.cpp" />
-    <ClCompile Include="src\Visitor\CellSearchVisitor.cpp" />
-    <ClCompile Include="src\Visitor\ValidationVisitor.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="include\Builder\SamuraiBuilder.hpp" />
-    <ClInclude Include="include\Builder\StandardBuilder.hpp" />
-    <ClInclude Include="include\Builder\SudokuBuilder.hpp" />
-    <ClInclude Include="include\CellAttributes.hpp" />
-    <ClInclude Include="include\Command\CheckCommand.hpp" />
-    <ClInclude Include="include\Command\Command.hpp" />
-    <ClInclude Include="include\Command\DefinitiveCommand.hpp" />
-    <ClInclude Include="include\Command\HelperCommand.hpp" />
-    <ClInclude Include="include\Command\Key.h" />
-    <ClInclude Include="include\Command\LoadPuzzle.hpp" />
-    <ClInclude Include="include\Composite\Composite.hpp" />
-    <ClInclude Include="include\Factory\CellFactory.hpp" />
-    <ClInclude Include="include\State\Cell\CellState.hpp" />
-    <ClInclude Include="include\State\Cell\EmptyState.hpp" />
-    <ClInclude Include="include\State\Cell\FinalState.hpp" />
-    <ClInclude Include="include\State\Game\DefinitiveGameState.hpp" />
-    <ClInclude Include="include\State\Game\GameState.hpp" />
-    <ClInclude Include="include\State\Game\HelperGameState.hpp" />
-    <ClInclude Include="include\State\Cell\NormalState.hpp" />
-    <ClInclude Include="include\Util.hpp" />
-    <ClInclude Include="include\Game.hpp" />
-    <ClInclude Include="include\Composite\Leaf.hpp" />
-    <ClInclude Include="include\Composite\Component.hpp" />
-    <ClInclude Include="include\Strategy\FourByFourReader.hpp" />
-    <ClInclude Include="include\Strategy\JigsawReader.hpp" />
-    <ClInclude Include="include\Strategy\NineByNineReader.hpp" />
-    <ClInclude Include="include\Factory\SudokuFactory.hpp" />
-    <ClInclude Include="include\Strategy\SamuraiReader.hpp" />
-    <ClInclude Include="include\Strategy\SixBySixReader.hpp" />
-    <ClInclude Include="include\Strategy\SudokuReader.hpp" />
-    <ClInclude Include="include\Visitor\CellSearchVisitor.hpp" />
-    <ClInclude Include="include\Visitor\ValidationVisitor.hpp" />
-    <ClInclude Include="include\Visitor\Visitor.hpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -1,11 +1,11 @@
-#include "View/Renderer.hpp"
+#include "Renderer.hpp"
 
 #include <iostream>
 
 #include "Game.hpp"
 #include "State/Game/DefinitiveGameState.hpp"
-#include "View/Color.hpp"
-#include "View/BoardRendererVisitor.hpp"
+#include "Color.hpp"
+#include "BoardRendererVisitor.hpp"
 
 Renderer::Renderer()
 	: window_{},
@@ -137,7 +137,7 @@ void Renderer::draw_highlight() const
 	const auto leaf = game_->get_searcher_target();
 	if (leaf == nullptr) { return; }
 
-	const auto [row, col, section, sudoku] = leaf->get_attributes();
+	const auto [row, col, section, max, sudoku] = leaf->get_attributes();
 
 	const auto& [r, g, b, a] = Color::to_sdl(Color::black());
 	SDL_SetRenderDrawColor(renderer_, r, g, b, 100);

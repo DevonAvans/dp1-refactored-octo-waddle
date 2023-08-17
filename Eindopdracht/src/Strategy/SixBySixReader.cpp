@@ -22,7 +22,7 @@ std::shared_ptr<Component> SixBySixReader::read(const std::string& path)
 			const int section_col = j / section_width_;
 			const int section_number = section_row * num_sections_per_row + section_col;
 
-			builder->build_cell({i, j, section_number}, cell_value);
+			builder->build_cell({i, j, section_number, size_}, cell_value);
 		}
 	}
 

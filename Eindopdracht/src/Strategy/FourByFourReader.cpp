@@ -17,7 +17,7 @@ std::shared_ptr<Component> FourByFourReader::read(const std::string& path)
 			const auto s_n = static_cast<int>(sqrt(size_));
 			// (i / section_size) * num_sections_per_row + (j / section_size);
 			const int section_number = (i / s_n) * s_n + (j / s_n);
-			builder->build_cell({i, j, section_number}, cell_value);
+			builder->build_cell({i, j, section_number, size_}, cell_value);
 		}
 	}
 	return builder->get();

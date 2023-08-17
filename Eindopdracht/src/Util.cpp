@@ -10,7 +10,7 @@ namespace utils
 		{
 			return std::stoi(str);
 		}
-		catch ([[maybe_unused]] const std::runtime_error& e)
+		catch ([[maybe_unused]] const std::exception& e)
 		{
 			throw std::runtime_error("Failed stoi");
 		}

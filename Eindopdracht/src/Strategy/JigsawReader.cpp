@@ -64,7 +64,7 @@ std::shared_ptr<Component> JigsawReader::read(const std::string& path)
 			const int row = i / 9;
 			const int col = i % 9;
 
-			builder->build_cell({row, col, section}, value);
+			builder->build_cell({row, col, section, size_}, value);
 		}
 	}
 

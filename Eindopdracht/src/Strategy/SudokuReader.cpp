@@ -1,6 +1,5 @@
 #include "Strategy/SudokuReader.hpp"
 
-#include <iostream>
 #include <fstream>
 #include <vector>
 
@@ -14,8 +13,7 @@ std::string SudokuReader::read_file(const std::string& path) const
 	std::ifstream file{path};
 	if (!file.is_open())
 	{
-		std::cerr << "couldnt open file" << std::endl;
-		return "";
+		throw std::runtime_error("Failed to open the file.");
 	}
 	std::string content;
 	std::string line;

@@ -1,10 +1,10 @@
-#include "View/BoardRendererVisitor.hpp"
+#include "BoardRendererVisitor.hpp"
 
 #include <SDL_render.h>
 #include <SDL_ttf.h>
 #include <string>
 
-#include "View/Color.hpp"
+#include "Color.hpp"
 
 BoardRendererVisitor::BoardRendererVisitor(const int cell_size, SDL_Renderer* renderer, TTF_Font* font,
                                            TTF_Font* small_font)
@@ -47,7 +47,7 @@ void BoardRendererVisitor::visit_composite(Composite* composite)
 void BoardRendererVisitor::draw(const Leaf* leaf) const
 {
 	//const auto offset = 12 * cell_size_;
-	const auto [row, col, section, sudoku] = leaf->get_attributes();
+	const auto [row, col, section, max, sudoku] = leaf->get_attributes();
 	//const auto x = col * cell_size_ + offset * sudoku;
 	//const auto y = row * cell_size_ + offset * sudoku;
 	const auto x = calc_x(col, sudoku);

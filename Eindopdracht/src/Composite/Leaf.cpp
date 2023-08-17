@@ -21,6 +21,7 @@ int Leaf::get_value() const
 
 void Leaf::set_value(const int value)
 {
+	if (value > attributes_.max) return;
 	current_state_->set_value(*this, value);
 	valid_ = true;
 	candidates_.clear();
@@ -44,7 +45,7 @@ std::vector<int> Leaf::get_candidates() const
 void Leaf::add_candidates(const int candidate)
 {
 	const auto existing_candidate = std::ranges::find(candidates_, candidate);
-	if (candidate == 0) return;
+	if (candidate == 0 || candidate > attributes_.max) return;
 	if (existing_candidate == candidates_.end())
 	{
 		candidates_.emplace_back(candidate);
