@@ -2,15 +2,13 @@
 
 #include "Renderer.hpp"
 #include "Game.hpp"
-#include "Util.hpp"
 
 int main(int argc, char* argv[])
 {
-	const std::string path = "resources/puzzle.samurai";
+	const std::string path = "resources/puzzle.6x6";
 
 	try
 	{
-		int res = utils::safe_stoi("12a3");
 		Renderer::instance()->init_game(path);
 		Renderer::instance()->start();
 	}

@@ -3,8 +3,6 @@
 #include <memory>
 #include <string>
 
-#include "Composite/Composite.hpp"
-
 class SudokuReader;
 
 class SudokuFactory

@@ -2,6 +2,7 @@
 
 void StandardBuilder::build_size(const int size)
 {
+	size_ = size;
 	sudoku_ = std::make_shared<Composite>();
 	sections_.resize(size);
 
@@ -14,7 +15,7 @@ void StandardBuilder::build_size(const int size)
 void StandardBuilder::build_cell(const CellAttributes& attributes, const int value) const
 {
 	sections_[attributes.section]->add_child(
-		factory_->create({attributes.row, attributes.col, attributes.section, attributes.section}, value));
+		factory_->create({attributes.row, attributes.col, attributes.section, size_}, value));
 }
 
 std::shared_ptr<Component> StandardBuilder::get()
