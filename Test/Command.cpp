@@ -9,7 +9,7 @@ namespace test::command
 	TEST_CLASS(CheckCommand)
 	{
 	public:
-		TEST_METHOD(sudoku_is_not_solved)
+		TEST_METHOD(sudoku4x4_is_not_solved)
 		{
 			// Arrange
 			// Default game config
@@ -21,7 +21,7 @@ namespace test::command
 			Assert::AreEqual(game_->get_sudoku()->is_valid(), false, L"Sudoku is not valid");
 		}
 
-		TEST_METHOD(sudoku_is_solved)
+		TEST_METHOD(sudoku4x4_is_solved)
 		{
 			// Arrange
 			// row 0
@@ -85,6 +85,55 @@ namespace test::command
 
 	private:
 		const char* path_ = "resources/puzzle.jigsaw";
+		std::unique_ptr<Game> game_ = std::make_unique<Game>(path_, std::make_unique<DefinitiveGameState>());
+	};
+
+	TEST_CLASS(GameStateCommands)
+	{
+	public:
+		TEST_METHOD(definitive_command)
+		{
+			// Arrange
+			const auto actual = 3;
+			// Default game config
+			game_->set_searcher_target(0, 0);
+			const auto cell = game_->get_searcher_target();
+
+			// Act
+			game_->execute_command(key::Definitive);
+			game_->set_cell_value(*cell, actual);
+
+			// Assert
+			Assert::AreEqual(cell->get_value(), actual, L"Value of cell should be changed");
+			Assert::AreEqual(std::empty(cell->get_candidates()), true, L"Candidates array should be empty");
+		}
+
+		TEST_METHOD(helper_command)
+		{
+			// Arrange
+			const auto candidate1 = 1;
+			const auto candidate2 = 3;
+			// Default game config
+			game_->set_searcher_target(0, 0);
+			const auto cell = game_->get_searcher_target();
+
+			// Act
+			game_->execute_command(key::Helper);
+			game_->set_cell_value(*cell, candidate1);
+			game_->set_cell_value(*cell, candidate2);
+
+			const auto& candidates = cell->get_candidates();
+			const bool contains_value1 = std::ranges::find(candidates, candidate1) != candidates.end();
+			const bool contains_value3 = std::ranges::find(candidates, candidate2) != candidates.end();
+
+			// Assert
+			Assert::AreEqual(cell->get_value(), 0, L"Cell value shouldn't be changed. Expected value 0");
+			Assert::IsTrue(contains_value1, L"Candidates should contain the value 1");
+			Assert::IsTrue(contains_value3, L"Candidates should contain the value 3");
+		}
+
+	private:
+		const char* path_ = "resources/puzzle.4x4";
 		std::unique_ptr<Game> game_ = std::make_unique<Game>(path_, std::make_unique<DefinitiveGameState>());
 	};
 }
