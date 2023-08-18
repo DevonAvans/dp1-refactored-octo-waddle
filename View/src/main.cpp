@@ -5,7 +5,7 @@
 
 int main(int argc, char* argv[])
 {
-	const std::string path = "resources/puzzle.6x6";
+	const std::string path = "resources/puzzle.4x4";
 
 	try
 	{

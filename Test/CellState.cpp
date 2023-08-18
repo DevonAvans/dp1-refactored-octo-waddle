@@ -3,7 +3,7 @@
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-namespace test::CellState
+namespace test::cell_state
 {
 	TEST_CLASS(CellState)
 	{
