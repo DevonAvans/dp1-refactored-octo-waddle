@@ -1,4 +1,4 @@
-#include "View/Color.hpp"
+#include "Color.hpp"
 
 Color::Color()
 	: r_{255}, g_{255}, b_{255}, a_{1}

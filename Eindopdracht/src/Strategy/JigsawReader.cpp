@@ -2,8 +2,8 @@
 
 #include <iostream>
 
+#include "Util.hpp"
 #include "Builder/StandardBuilder.hpp"
-#include "Composite/Composite.hpp"
 #include "Composite/Leaf.hpp"
 
 std::shared_ptr<Component> JigsawReader::read(const std::string& path)
@@ -23,7 +23,7 @@ std::shared_ptr<Component> JigsawReader::read(const std::string& path)
 
 	std::vector<std::string> segments;
 	size_t start = 0;
-	size_t end = str.find('=');
+	size_t end = str.find(cell_sep_);
 
 	while (start < str.length())
 	{
@@ -50,17 +50,21 @@ std::shared_ptr<Component> JigsawReader::read(const std::string& path)
 	for (auto i = 0; i < segments.size(); ++i)
 	{
 		const auto segment = segments.at(i);
-		const size_t j_pos = segment.find('J');
+		const size_t j_pos = segment.find(value_sep_);
 
 		if (j_pos != std::string::npos)
 		{
-			const auto value = std::stoi(segment.substr(0, j_pos));
-			const auto section = std::stoi(segment.substr(j_pos + 1));
+			const auto value = utils::safe_stoi(
+				segment.substr(0, j_pos)
+			);
+			const auto section = utils::safe_stoi(
+				segment.substr(j_pos + 1)
+			);
 
 			const int row = i / 9;
 			const int col = i % 9;
 
-			builder->build_cell({row, col, section}, value);
+			builder->build_cell({row, col, section, size_}, value);
 		}
 	}
 

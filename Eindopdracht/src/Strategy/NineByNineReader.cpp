@@ -1,5 +1,6 @@
 #include "Strategy/NineByNineReader.hpp"
 
+#include "Util.hpp"
 #include "Builder/StandardBuilder.hpp"
 
 std::shared_ptr<Component> NineByNineReader::read(const std::string& path)
@@ -12,11 +13,11 @@ std::shared_ptr<Component> NineByNineReader::read(const std::string& path)
 		for (int j = 0; j < size_; ++j)
 		{
 			const auto index = i * size_ + j;
-			const auto cell_value = std::stoi(str.substr(index, 1));
+			const auto cell_value = utils::safe_stoi(str.substr(index, 1));
 			const auto s_n = static_cast<int>(sqrt(size_));
 			// (i / section_size) * num_sections_per_row + (j / section_size);
 			const int section_number = (i / s_n) * s_n + (j / s_n);
-			builder->build_cell({i, j, section_number}, cell_value);
+			builder->build_cell({i, j, section_number, size_}, cell_value);
 		}
 	}
 	return builder->get();

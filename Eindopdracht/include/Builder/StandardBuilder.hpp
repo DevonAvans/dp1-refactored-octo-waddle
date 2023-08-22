@@ -18,4 +18,5 @@ private:
 	std::unique_ptr<CellFactory> factory_;
 	std::shared_ptr<Composite> sudoku_;
 	std::vector<std::shared_ptr<Composite>> sections_;
+	int size_ = 9;
 };

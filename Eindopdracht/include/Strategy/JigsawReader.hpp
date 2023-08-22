@@ -10,4 +10,6 @@ public:
 private:
 	const int size_ = 9;
 	const std::string prefix_ = "SumoCueV1";
+	const char cell_sep_ = '=';
+	const char value_sep_ = 'J';
 };

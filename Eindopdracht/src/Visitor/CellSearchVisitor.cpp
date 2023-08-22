@@ -7,7 +7,7 @@ CellSearchVisitor::CellSearchVisitor()
 
 void CellSearchVisitor::visit_leaf(Leaf* leaf)
 {
-	const auto [row, col, section, sudoku] = leaf->get_attributes();
+	const auto [row, col, section, max, sudoku] = leaf->get_attributes();
 
 	if (target_row_ == row && target_col_ == col)
 	{

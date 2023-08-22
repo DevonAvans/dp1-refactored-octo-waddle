@@ -18,7 +18,7 @@ class SamuraiBuilder final : public SudokuBuilder
 {
 public:
 	SamuraiBuilder();
-	std::shared_ptr<Component> get();
+	std::shared_ptr<Component> get() override;
 
 	void create_top_left(const std::string& data) const;
 	void create_top_right(const std::string& data) const;
@@ -37,12 +37,12 @@ private:
 
 	void ching_chong(std::vector<std::shared_ptr<Composite>>& sections, const std::string& data, Offset offset) const;
 	void bind(const std::vector<std::shared_ptr<Composite>>& sections) const;
-public:
-	void build_size(int size) override
-	{
-	};
 
-	void build_cell(const CellAttributes& attributes, int value) const override
-	{
-	}
+	const int sudoku_size_ = 9;
+	const int offset_ = 12;
+
+public:
+	void build_size(int size) override;
+
+	void build_cell(const CellAttributes& attributes, int value) const override;
 };

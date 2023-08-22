@@ -18,13 +18,7 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\View\Renderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\View\Color.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Builder\SamuraiBuilder.cpp">
@@ -37,9 +31,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Strategy\NineByNineReader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Strategy\ReaderContext.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Strategy\FourByFourReader.cpp">
@@ -60,9 +51,6 @@
     <ClCompile Include="src\Composite\Composite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Visitor\SudokuVisitor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Visitor\CellSearchVisitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -73,9 +61,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\State\Cell\EmptyState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\View\BoardRendererVisitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Visitor\ValidationVisitor.cpp">
@@ -105,14 +90,14 @@
     <ClCompile Include="src\Command\DefinitiveCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Command\LoadPuzzle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Util.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\View\Vector2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\View\Renderer.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Game.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -123,9 +108,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Composite\Component.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\View\Color.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Builder\SudokuBuilder.hpp">
@@ -146,9 +128,6 @@
     <ClInclude Include="include\Strategy\NineByNineReader.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Strategy\ReaderContext.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Strategy\SixBySixReader.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -159,9 +138,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Visitor\Visitor.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Visitor\SudokuVisitor.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Visitor\CellSearchVisitor.hpp">
@@ -182,9 +158,6 @@
     <ClInclude Include="include\CellAttributes.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\View\BoardRendererVisitor.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Visitor\ValidationVisitor.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -195,9 +168,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\State\Game\HelperGameState.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Factory\AbstractFactory.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Factory\CellFactory.hpp">
@@ -221,26 +191,11 @@
     <ClInclude Include="include\Command\Key.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="resources\puzzle.4x4" />
-    <CopyFileToFolders Include="resources\puzzle.6x6" />
-    <CopyFileToFolders Include="resources\puzzle.9x9" />
-    <CopyFileToFolders Include="resources\puzzle.jigsaw" />
-    <CopyFileToFolders Include="resources\puzzle.samurai" />
-    <CopyFileToFolders Include="resources\puzzle2.4x4" />
-    <CopyFileToFolders Include="resources\puzzle2.6x6" />
-    <CopyFileToFolders Include="resources\puzzle2.9x9" />
-    <CopyFileToFolders Include="resources\puzzle2.jigsaw" />
-    <CopyFileToFolders Include="resources\puzzle2.samurai" />
-    <CopyFileToFolders Include="resources\puzzle3.4x4" />
-    <CopyFileToFolders Include="resources\puzzle3.6x6" />
-    <CopyFileToFolders Include="resources\puzzle3.9x9" />
-    <CopyFileToFolders Include="resources\puzzle3.jigsaw" />
-    <CopyFileToFolders Include="resources\puzzle3.samurai" />
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="resources\fonts\Roboto-Regular.ttf" />
-    <Font Include="resources\fonts\Roboto-Bold.ttf" />
+    <ClInclude Include="include\Command\LoadPuzzle.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Util.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

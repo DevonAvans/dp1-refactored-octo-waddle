@@ -40,7 +40,4 @@ private:
 	std::unordered_map<key, std::unique_ptr<Command>> dictionary_;
 
 	void load_commands();
-
-	void change_final_state_value() const;
-	void change_empty_to_helper() const;
 };

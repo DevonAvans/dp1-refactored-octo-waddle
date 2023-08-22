@@ -14,7 +14,7 @@ void ValidationVisitor::visit_composite(Composite* composite)
 	{
 		if (auto cell = dynamic_cast<Leaf*>(child.get()))
 		{
-			const auto [row, col, section, sudoku] = cell->get_attributes();
+			const auto [row, col, section, max, sudoku] = cell->get_attributes();
 
 			rows_[row].push_back(cell);
 			cols_[col].push_back(cell);
